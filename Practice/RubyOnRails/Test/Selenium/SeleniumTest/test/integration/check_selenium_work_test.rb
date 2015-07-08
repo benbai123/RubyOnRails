@@ -12,7 +12,8 @@ class CheckSeleniumWorkTest < ActionDispatch::IntegrationTest
 
     puts driver.title
 
-    # do not quit driver so we can see search result
-    # driver.quit
+    sleep 2
+    # quit driver, close browser window
+    driver.quit
   end
 end
