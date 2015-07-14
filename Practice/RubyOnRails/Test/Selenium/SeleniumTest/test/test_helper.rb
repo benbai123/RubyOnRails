@@ -9,7 +9,7 @@ class ActiveSupport::TestCase
   # complain zoom is 250% but it should be 100%
   # on IE11/Windows 8.1
   iecaps["ignoreZoomSetting"] = true;
-  @@browsers = [:firefox, :chrome]
+  @@browsers = [:chrome, :firefox]
   @@remoteBrowsers = [
     { "url" => "http://192.168.31.169:4444/wd/hub",
       "desired_capabilities" =>  iecaps},
@@ -29,5 +29,16 @@ class ActiveSupport::TestCase
   end
   def self.remoteBrowsers
     @@remoteBrowsers
+  end
+  def self.getDriverByBrowser (browser)
+    if browser == :chrome
+      # need to add --test-type for chrome switches
+      # refer to http://stackoverflow.com/a/24875657
+      driver = Selenium::WebDriver.for browser, :switches => %w[--ignore-certificate-errors --disable-popup-blocking --disable-translate --test-type]
+      return driver
+    else
+      driver = Selenium::WebDriver.for browser
+      return driver
+    end
   end
 end

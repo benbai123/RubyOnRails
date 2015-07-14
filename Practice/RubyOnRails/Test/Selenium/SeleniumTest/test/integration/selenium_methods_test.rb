@@ -4,12 +4,18 @@ class SeleniumMethodsTest < ActionDispatch::IntegrationTest
   def test_sanity
     path = File.join(Rails.root, "vendor", "html", "test.html")
     ActiveSupport::TestCase.browsers.each do |browser|
-      driver = Selenium::WebDriver.for browser
+      driver = ActiveSupport::TestCase.getDriverByBrowser( browser )
       driver.navigate.to "file://" + path
+
+      # move and resize browser window
+      # works in IE/Firefox but not works in Chrome
+      # refer to http://stackoverflow.com/a/10337637
+
       # move browser window
-      driver.manage.window.move_to(1000, 50)
+      # driver.manage.window.move_to(1000, 50)
       # resize browser window
-      driver.manage.window.resize_to(350, 250)
+      # driver.manage.window.resize_to(350, 550)
+
       # get element by id
       btn = driver.find_element(:id, "btn")
       # get element by css class
@@ -32,7 +38,6 @@ class SeleniumMethodsTest < ActionDispatch::IntegrationTest
       testAjaxCall( driver, inp )
       sleep 1
       driver.quit
-      break
     end
   end
   def testClickAndGetCssValue (inp, btn)
@@ -41,7 +46,7 @@ class SeleniumMethodsTest < ActionDispatch::IntegrationTest
     # get element css style
     borderColor = inp.css_value("border-color")
     # border color of .inp should be red now
-    assert_equal "red", borderColor
+    assert_equal "rgb(255, 0, 0)", borderColor
     sleep 0.3
   end
   def testClearAndSetInputValue (driver, latLngInp)
@@ -97,11 +102,11 @@ class SeleniumMethodsTest < ActionDispatch::IntegrationTest
       confirmBox.accept
       # check class has applied
       assert_equal true, driver.execute_script("return $(arguments[0]).hasClass('green-border');", inp)
-      assert_not_equal "red", inp.css_value("border-color")
+      assert_not_equal "rgb(255, 0, 0)", inp.css_value("border-color")
     else
       confirmBox.dismiss
       # check style not changed
-      assert_equal "red", inp.css_value("border-color")
+      assert_equal "rgb(255, 0, 0)", inp.css_value("border-color")
     end
     sleep 0.5
   end
