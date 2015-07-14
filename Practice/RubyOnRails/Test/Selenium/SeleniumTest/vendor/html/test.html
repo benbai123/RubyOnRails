@@ -1,0 +1,47 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <script>
+      // for testing
+      // test run js function and get js value
+      function useGeoService () {
+        $.get('http://maps.googleapis.com/maps/api/geocode/json',
+          {'latlng': $('.latLngInp').val(),
+            'sensor': 'true',
+            'language': 'en'},
+          function (data) {
+            $('.inp').val(data.results[0].formatted_address);
+          });
+      }
+      $(document).on('ready', function () {
+        // listen events for testing
+        // test trigger
+        // test get message from alert/confirm
+        // test press ok/confirm/dismiss
+        $('#btn').on('some-custom-event', function () {
+          alert('some custom event happend on #btn');
+        }).on('change-to-green-border', function () {
+          var change = confirm('change to green border?');
+          if (change)
+            $('.inp').css('border', '').addClass('green-border');
+        });
+      });
+    </script>
+    <style>
+      .green-border {
+        border: 1px solid green;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- test get element by class, id or xpath
+        test get elements' attribute or style
+     -->
+    <input class="inp" type="text"></input>
+    <button id="btn" onclick="$('.inp').css('border', '1px solid red');">add input border</button>
+    <br />
+    <input class="latLngInp" type="text" value="0.0,0.0"></input>
+    <iframe src="test-iframe.html"></iframe>
+  </body>
+</html> 
