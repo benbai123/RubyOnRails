@@ -3,7 +3,7 @@ require "test_helper"
 class AddChromeDriverTest < ActionDispatch::IntegrationTest
   def test_sanity
     ActiveSupport::TestCase.browsers.each do |browser|
-    	driver = Selenium::WebDriver.for :firefox
+    	driver = Selenium::WebDriver.for browser
 	    driver.navigate.to "http://google.com"
 
 	    element = driver.find_element(:name, 'q')
