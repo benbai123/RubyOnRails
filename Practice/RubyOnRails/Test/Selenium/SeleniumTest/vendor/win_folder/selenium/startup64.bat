@@ -1,0 +1,1 @@
+java -jar -Dwebdriver.ie.driver="%~dp0IEDriverServer64.exe" -Dwebdriver.chrome.driver="%~dp0chromedriver.exe" -Dwebdriver.firefox.bin="%~dp0..\paf\FirefoxPortable\v_38\FirefoxPortable.exe" %~dp0selenium-server-standalone-2.46.0.jar
