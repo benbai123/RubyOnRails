@@ -59,7 +59,16 @@ class ActiveSupport::TestCase
   # 
   # browsers="[{'url' => '192.168.31.169','browser' => 'chrome', 'caps' => {'chromeOptions' => {'args' => ['--ignore-certificate-errors', '--disable-popup-blocking', '--disable-translate']}}}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]" rake test test/integration/parameterized_with_env_test.rb
 
+  def self.testWithEnvParam (test_case)
+    # iterate param array
+    paramsFromEnv.each do |param|
+      # get driver with param
+      driver = ActiveSupport::TestCase.getRemoteDriverFromEnvParam(param)
+      test_case.doTest(driver)
+    end
+  end
   def self.paramsFromEnv
+    # parse parameters
     return JSON.parse ENV['browsers'].gsub('=>', ':').gsub("'", "\"")
   end
   def self.getRemoteDriverFromEnvParam (param)
