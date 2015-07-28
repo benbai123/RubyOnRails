@@ -70,7 +70,7 @@ class AddOperaDriverTest < ActionDispatch::IntegrationTest
     end
   end
   def doTest (driver)
-  	driver.navigate.to "http://google.com"
+    driver.navigate.to "http://google.com"
 
     element = driver.find_element(:name, 'q')
     element.send_keys "Hello WebDriver!"
