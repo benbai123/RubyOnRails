@@ -1,0 +1,53 @@
+Project name
+SeleniumTest
+
+
+Parameters
+
+String 1
+
+name
+browsers
+
+default
+[{'url' => '192.168.31.169'}]
+
+desc
+# usage:
+# [{'url' => 'remote url', 'port' => 'port number', 'browser' => 'browser name', 'caps' => capabilities_hash}, ...]
+
+# url: required, url of remote selnium server
+# port: optional, default '4444'
+# browser: optional, default 'firefox', also supports 'internet_explorer', 'chrome', 'opera'
+# caps: optional, will override desired capabilities if provided
+
+# e.g.
+# [{'url' => '192.168.31.169'}]
+# 
+# [{'url' => '192.168.31.169'}, {'url' => '192.168.31.169', 'port' => '5555', 'browser' => 'opera'}]
+# 
+# [{'url' => '192.168.31.169','browser' => 'chrome'}, {'url' => '192.168.31.169', 'port' => '5555', 'browser' => 'opera'}]
+# 
+# [{'url' => '192.168.31.169','browser' => 'chrome', 'caps' => {'chromeOptions' => {'args' => ['--ignore-certificate-errors', '--disable-popup-blocking', '--disable-translate', '--test-type']}}}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]
+
+
+
+String 2
+
+name
+cases
+
+default
+['parameterized_with_env_test.rb', 'remote_webdriver_test.rb']
+
+desc
+test cases, use comma to separate
+
+
+
+Build step
+
+run shell
+
+cd /home/benbai/Things/data/github/RubyOnRails/Practice/RubyOnRails/Test/Selenium/SeleniumTest
+cases=$cases browsers=$browsers rake test:fileset
