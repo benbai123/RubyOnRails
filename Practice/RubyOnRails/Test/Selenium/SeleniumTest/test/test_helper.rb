@@ -68,6 +68,10 @@ class ActiveSupport::TestCase
     end
   end
   def self.paramsFromEnv
+    # skip if no given browsers
+    if !ENV['browsers']
+      return []
+    end
     # parse parameters
     return JSON.parse ENV['browsers'].gsub('=>', ':').gsub("'", "\"")
   end
@@ -107,6 +111,19 @@ class ActiveSupport::TestCase
           })
       end
       return caps
+    end
+  end
+  def self.displayError (error, file)
+    puts "Error: " + error.message
+    errArray = error.backtrace.map{ |x|
+      x.match(/^(.+?):(\d+)(|:in `(.+)')$/); 
+      [$1,$2,$4]
+    }
+    errArray.each do |err|
+      if err[0].end_with? File.basename(file)
+        puts "Line: "+err[1]+", "+err[2]+", File: "+File.basename(file)
+        puts ""
+      end
     end
   end
 end

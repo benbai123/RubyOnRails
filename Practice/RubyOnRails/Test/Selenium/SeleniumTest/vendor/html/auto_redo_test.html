@@ -1,0 +1,23 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <style>
+      .target {
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+    <script>
+      $(document).on('ready', function () {
+        $('.target').on('click', function () {
+          $('.inp').val('clicked');
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <div class="target"></div>
+    <input class="inp"></inp>
+  </body>
+</html> 
