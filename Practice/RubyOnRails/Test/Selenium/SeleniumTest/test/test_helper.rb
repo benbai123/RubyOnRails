@@ -90,19 +90,19 @@ class ActiveSupport::TestCase
     driver = Selenium::WebDriver.for(:remote, :url => url, :desired_capabilities => caps)
   end
   def self.getBrowserCapabilities (browser)
-    if browser == 'opera'
+    if browser.eql? 'opera'
       # use chrome driver for opera
       return Selenium::WebDriver::Remote::Capabilities.send('chrome')
     else
       # call method by string
       caps = Selenium::WebDriver::Remote::Capabilities.send(browser)
-      if browser == 'internet_explorer'
+      if browser.eql? 'internet_explorer'
         # Capabilities for IE driver
         # need to ignore zoom or it will
         # complain zoom is 250% but it should be 100%
         # on IE11/Windows 8.1
         caps.merge!({'ignoreZoomSetting' => true})
-      elsif browser == 'chrome'
+      elsif browser.eql? 'chrome'
         # the way that use switches with desired_capabilities
         caps.merge!({
               'chromeOptions' => {"args" => ["--ignore-certificate-errors",
