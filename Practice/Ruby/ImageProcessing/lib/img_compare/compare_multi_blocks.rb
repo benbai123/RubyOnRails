@@ -2,8 +2,8 @@
 require 'chunky_png'
 
 images = [
-  ChunkyPNG::Image.from_file('../assets/test1.png'),
-  ChunkyPNG::Image.from_file('../assets/test2.png')
+  ChunkyPNG::Image.from_file(File.expand_path('../../assets/test1.png', __FILE__)),
+  ChunkyPNG::Image.from_file(File.expand_path('../../assets/test2.png', __FILE__))
 ]
 diff_arrays = []
 # store minX, minY, maxX, maxY
@@ -12,6 +12,8 @@ diff = []
 # to small will cause weird result
 split_dist = 30 # 30px
 split_dist = split_dist*split_dist
+# margin for rect
+margin = 2
 
 images.first.height.times do |y|
   images.first.row(y).each_with_index do |pixel, x|
@@ -24,6 +26,7 @@ images.first.height.times do |y|
         dy = y - diff[3]
         # min dist of x
         dx = [(x-diff[0]).abs, (x-diff[2]).abs].min
+        # if larger than split distance
         if (dy*dy+dx*dx) > split_dist
           # store current diff
           diff_arrays << diff
@@ -45,8 +48,8 @@ x, y = diff.map{ |xy| xy[0] }, diff.map{ |xy| xy[1] }
 
 if diff_arrays.length > 0
   diff_arrays.each do |d|
-    images.last.rect(d[0], d[1], d[2], d[3], ChunkyPNG::Color.rgb(255,0,0), ChunkyPNG::Color.from_hex('#FF0000', 70))
+    images.last.rect(d[0]-margin, d[1]-margin, d[2]+margin, d[3]+margin, ChunkyPNG::Color.rgb(255,0,0), ChunkyPNG::Color.from_hex('#FF0000', 70))
   end
-  images.last.save('result/diff2.png')
+  images.last.save(File.expand_path('../result/diff2.png', __FILE__))
 end
 

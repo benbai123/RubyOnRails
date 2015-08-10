@@ -2,8 +2,8 @@
 require 'chunky_png'
 
 images = [
-  ChunkyPNG::Image.from_file('../assets/test1.png'),
-  ChunkyPNG::Image.from_file('../assets/test2.png')
+  ChunkyPNG::Image.from_file(File.expand_path('../../assets/test1.png', __FILE__)),
+  ChunkyPNG::Image.from_file(File.expand_path('../../assets/test2.png', __FILE__))
 ]
 
 diff = []
@@ -22,6 +22,6 @@ x, y = diff.map{ |xy| xy[0] }, diff.map{ |xy| xy[1] }
 
 if diff.length > 0
   images.last.rect(x.min, y.min, x.max, y.max, ChunkyPNG::Color.rgb(0,255,0))
-  images.last.save('result/diff.png')
+  images.last.save(File.expand_path('../result/diff.png', __FILE__))
 end
 
