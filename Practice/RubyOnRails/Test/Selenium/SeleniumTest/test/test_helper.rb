@@ -1,6 +1,8 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require 'fileutils'
+require 'chunky_png'
 
 class ActiveSupport::TestCase
   # Capabilities for IE driver
@@ -126,4 +128,100 @@ class ActiveSupport::TestCase
       end
     end
   end
+end
+class ActiveSupport::VisualTestingHelper
+  @@visualTestingDir = File.join(Rails.root, "test", "visualTesting")
+  # store current image number and folders for each case (caller)
+  @@callerCnt = {}
+  @@output = true
+  def self.init_vt
+    case_name = caller[0].split('/').last.split('.')[0]
+    # reset image count
+    @@callerCnt[case_name] = {
+      'counter'=> 1,
+      'base_dir'=> File.join(@@visualTestingDir, case_name, 'base_dir'),
+      'new_dir'=> File.join(@@visualTestingDir, case_name, 'new_dir'),
+      'diff_dir'=> File.join(@@visualTestingDir, case_name, 'diff_dir')
+    }
+    cnt = @@callerCnt[case_name]
+
+    FileUtils.mkdir_p(@@visualTestingDir) unless File.directory?(@@visualTestingDir)
+    FileUtils.mkdir_p(cnt['base_dir']) unless File.directory?(cnt['base_dir'])
+    FileUtils.mkdir_p(cnt['new_dir']) unless File.directory?(cnt['new_dir'])
+    FileUtils.mkdir_p(cnt['diff_dir']) unless File.directory?(cnt['diff_dir'])
+  end
+  def self.visual_testing (driver)
+    case_name = caller[0].split('/').last.split('.')[0]
+    cnt = @@callerCnt[case_name]
+    counter = cnt['counter']
+    cnt['counter'] = counter+1
+    # tail of image file name, with leading zero
+    imgTail = counter.to_s.rjust(5, "0") + '.png'
+    baseImg = File.join(cnt['base_dir'], 'base_'+imgTail)
+    if !File.file?(baseImg)
+      driver.save_screenshot baseImg
+    else
+      newImg = File.join(cnt['new_dir'], 'new_'+imgTail)
+      diffImg = File.join(cnt['diff_dir'], 'diff_'+imgTail)
+      driver.save_screenshot newImg
+      self.diff_img(baseImg, newImg, diffImg)
+    end
+  end
+  def self.diff_img (baseImg, currImg, diffImg)
+    images = [
+      ChunkyPNG::Image.from_file(baseImg),
+      ChunkyPNG::Image.from_file(currImg)
+    ]
+    diff_arrays = []
+    # store minX, minY, maxX, maxY
+    diff = []
+    # distance for split diff array
+    # to small will cause weird result
+    split_dist = 30 # 30px
+    split_dist = split_dist*split_dist
+    # margin for rect
+    margin = 2
+
+    images.first.height.times do |y|
+      images.first.row(y).each_with_index do |pixel, x|
+        if pixel != images.last[x,y]
+          if diff.length == 0
+            diff += [x, y, x, y] # init
+          else
+            # distance from point to diff rect
+            # dist to maxY
+            dy = y - diff[3]
+            # min dist of x
+            dx = 0 # init
+            # update
+            dx = diff[0]-x if x < diff[0]
+            dx = x-diff[2] if x > diff[2]
+            # if larger than split distance
+            if (dy*dy+dx*dx) > split_dist
+              # store current diff
+              diff_arrays << diff
+              # create a new diff
+              diff = [x, y, x, y] # init
+            else
+              diff[0] = x if x < diff[0] # update minX
+              # no need to check minY
+              diff[2] = x if x > diff[2] # update maxX
+              diff[3] = y if y > diff[3] # update maxY
+            end
+          end
+        end
+      end
+    end
+    diff_arrays << diff if diff.length > 0
+
+    x, y = diff.map{ |xy| xy[0] }, diff.map{ |xy| xy[1] }
+
+    if diff_arrays.length > 0
+      diff_arrays.each do |d|
+        images.last.rect(d[0]-margin, d[1]-margin, d[2]+margin, d[3]+margin, ChunkyPNG::Color.rgb(255,0,0), ChunkyPNG::Color.from_hex('#FF0000', 70))
+      end
+      images.last.save(diffImg)
+    end
+  end
+  # FileUtils.mkdir_p(dirname)
 end

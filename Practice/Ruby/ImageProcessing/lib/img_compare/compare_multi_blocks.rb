@@ -25,7 +25,10 @@ images.first.height.times do |y|
         # dist to maxY
         dy = y - diff[3]
         # min dist of x
-        dx = [(x-diff[0]).abs, (x-diff[2]).abs].min
+        dx = 0 # init
+        # update
+        dx = diff[0]-x if x < diff[0]
+        dx = x-diff[2] if x > diff[2]
         # if larger than split distance
         if (dy*dy+dx*dx) > split_dist
           # store current diff

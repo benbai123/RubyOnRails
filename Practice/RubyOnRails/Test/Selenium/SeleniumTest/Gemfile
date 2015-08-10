@@ -41,3 +41,6 @@ gem 'spring',        group: :development
 # Use selenium and minitest
 gem 'selenium-webdriver'
 gem 'minitest-rails'
+
+# chunky png for image compare
+gem 'chunky_png'
