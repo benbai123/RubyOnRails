@@ -6,7 +6,7 @@ class VisualTestingTest < ActionDispatch::IntegrationTest
     begin
       path = File.join(Rails.root, "vendor", "html", "auto_redo_test.html")
 
-      ActiveSupport::VisualTestingHelper.init_vt()
+      ActiveSupport::VisualTestingHelper.init_vt(driver)
 
       driver.navigate.to "file://" + path
       div = driver.find_element(:class, "target")
@@ -23,7 +23,7 @@ class VisualTestingTest < ActionDispatch::IntegrationTest
       driver.navigate.refresh
       sleep 1
       div = driver.find_element(:class, "target")
-      ActiveSupport::VisualTestingHelper.init_vt()
+      ActiveSupport::VisualTestingHelper.init_vt(driver)
       driver.execute_script("$('.target').html('err')")
       ActiveSupport::VisualTestingHelper.visual_testing(driver)
       div.click
@@ -32,6 +32,12 @@ class VisualTestingTest < ActionDispatch::IntegrationTest
       ActiveSupport::VisualTestingHelper.visual_testing(driver)
     ensure
       driver.quit
+      if ENV['checkvt']
+        File.open(ENV['task_filename'],'wb') do |f|
+          f.write Marshal.dump(ActiveSupport::VisualTestingHelper.getVtCnt)
+        end
+        ENV['checkvt'] = nil
+      end
     end
   end
 end
