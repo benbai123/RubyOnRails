@@ -16,7 +16,9 @@
       <div class="outer">
         <% arr.each do |url| %>
           <div class="block">
-            <img src="<%= url %>" />
+            <a href="<%= url %>">
+              <img src="<%= url %>" />
+            </a>
           </div>
         <% end %>
       </div>
@@ -165,7 +167,9 @@
     // close control when click close area
     $ctrl.find('.desc-close').on('click', hideCtrl);
     // show control when image clicked
-    $('.wrapper .imgs img').on('click', function () {
+    $('.wrapper .imgs img').on('click', function (e) {
+      if (e.ctrlKey) return;
+      e.preventDefault();
       var cimg = this,
         arr = cimg.src.split('/');
       // opened and clicked again
