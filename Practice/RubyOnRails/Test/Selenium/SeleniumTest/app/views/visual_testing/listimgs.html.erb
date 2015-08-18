@@ -1,0 +1,263 @@
+<!--
+    html content
+    some comments are in style area below
+  -->
+<div class="wrapper">
+  <!-- title for imgs -->
+  <div class="imgstxt">
+    <div>Click image to open control and zoom in</div>
+    <div class="block">base image</div>
+    <div class="block">new (current) image</div>
+    <div class="block">diff image</div>
+  </div>
+  <!-- imgs -->
+  <div class="imgs">
+    <% @imgarrs.each do |arr| %>
+      <div class="outer">
+        <% arr.each do |url| %>
+          <div class="block">
+            <img src="<%= url %>" />
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <!-- used to adjust size when ctrl block opened -->
+    <div class="bottom-filler"></div>
+  </div>
+</div>
+<!-- control block -->
+<div class="controls">
+  <span class="desc-close">
+    Mousemove on original img to move zoomed img, Click original image or this area to close.<br>
+    Click Apply button to apply new img as base img, click Delete button to delete base img.
+  </span>
+  <div class="buttons">
+    <!-- Apply button, only displayed when base img clicked -->
+    <button class="btn apply">Apply</button>
+    <!-- Apply button, only displayed when new img clicked -->
+    <button class="btn delete">Delete</button>
+  </div>
+  <!-- zoom in img -->
+  <div class="zoom-area"></div>
+</div>
+<!--
+    simple style
+  -->
+<style>
+  html,
+  body,
+  .wrapper {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .wrapper {
+    width: 98%;
+    height: 98%;
+  }
+  /*
+    imgs: contains all image;
+    imgstxt: title of images;
+  */
+  .imgs,
+  .imgstxt {
+    padding-top: 20px;
+    display: inline-block;
+    width: 100%;
+    height: 84%;
+    overflow: auto;
+    background-color: #CCCCCC;
+    font-size: 24px;
+  }
+  /*
+    3 blocks for each row
+  */
+  .imgs .block,
+  .imgstxt .block {
+    text-align: center;
+    display: inline-block;
+    width: 30%;
+    height: 45%;
+    margin: 1%;
+  }
+  .imgstxt {
+    height: 16%;
+  }
+  /*
+    fit height of image title
+  */
+  .imgstxt .block {
+    height: auto;
+  }
+  /*
+    wrapper images by outer (a div) each row for
+    better control
+  */
+  .imgs .outer {
+    text-align: left;
+  }
+  .imgs .outer .block {
+    height: auto;
+  }
+  /*
+    img under imgs
+  */
+  .imgs img {
+    cursor: pointer;
+    width: 100%;
+    height: auto;
+  }
+  /*
+    ctrl block for action and zoom in
+  */
+  .controls {
+    background-color: #CCCCCC;
+    border: 1px solid blue;
+    position: fixed;
+    display: none;
+    bottom: 0;
+    left: 0;
+    width: 99%;
+    height: 45%;
+    z-index: 1000;
+  }
+  /*
+    description for ctrl block
+    also a control for close ctrl block
+  */
+  .controls .desc-close {
+    font-size: 24px;
+    display: inline-block;
+    width: 15%;
+    border: 1px solid navy;
+  }
+  /*
+    zoom in img here
+  */
+  .controls .zoom-area {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+    width: 65%;
+    overflow: hidden;
+  }
+  /*
+    contains 2 buttons 'Delete' and 'Apply'
+  */
+  .controls .buttons {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .controls .buttons button {
+    font-size: 24px;
+  }
+</style>
+<!--
+    simple script for zoom and control
+  -->
+<script>
+  initImgs = function () {
+    // control and zoomed img
+    var $ctrl = $('.controls');
+
+    // close control when click close area
+    $ctrl.find('.desc-close').on('click', hideCtrl);
+    // show control when image clicked
+    $('.wrapper .imgs img').on('click', function () {
+      var cimg = this,
+        arr = cimg.src.split('/');
+      // opened and clicked again
+      // close ctrl block
+      if ($ctrl.handle == this) {
+        hideCtrl();
+        return;
+      }
+      // store self to handle of ctrl
+      $ctrl.handle = this;
+      // append and zoom in clicked image
+      $ctrl.find('.zoom-area').empty().append(
+        $(this).clone().css({
+          'width': '300%',
+          'height': 'auto',
+          'position': 'absolute'
+        }
+      ));
+      // display buttons as needed
+      $ctrl.find('.buttons .btn').css('display', 'none').filter(
+          function () {
+            console.log(arr[arr.length-1].indexOf('base') == 0 && $(this).hasClass('delete')
+              || arr[arr.length-1].indexOf('new') == 0 && $(this).hasClass('apply'));
+            // delete button for base img
+            // apply button for new img
+            return arr[arr.length-1].indexOf('base') == 0 && $(this).hasClass('delete')
+              || arr[arr.length-1].indexOf('new') == 0 && $(this).hasClass('apply');
+          }
+        ).css('display', 'block');
+      showCtrl();
+      // end of click handler
+    }).on('mousemove', function (e) {
+      // move zoomed image
+      if ($ctrl.handle == this) {
+        var $self = $(this),
+          ofs = $self.offset(),
+          w = $self.width(), // width of small img (simg)
+          h = $self.height(), // height of simg
+          px = e.pageX - ofs.left, // pos X in simg
+          py = e.pageY - ofs.top, // pos Y in simg
+          $z = $ctrl.find('.zoom-area'), // zoom area
+          $zi = $ctrl.find('.zoom-area img'), // zoomed img
+          sx = $zi.width() / w, // scale X
+          sy = $zi.height() / h, // scale Y
+          left = Math.min(0, -1*px*sx+$z.width()/2), // calculated left and top
+          top = Math.min(0, -1*py*sy+$z.height()/2);
+        // move zoomed img
+        $zi.css({
+          'left': left+'px',
+          'top': top+'px'
+        });
+      }
+    });
+
+    // control buttons
+    $ctrl.find('.buttons .btn').on('click', function () {
+      var act = $(this)[0].innerHTML,
+        $outer = $($ctrl.handle).closest('.outer'),
+        $imgs = $outer.find('img');
+        console.log(act),
+        onResp = null;
+      // update client status directly
+      if (act == 'Apply') {
+        onResp = function () {
+          $imgs.eq(0).replaceWith($imgs.eq(1).clone());
+          $imgs.eq(2).remove(); 
+        }
+      } else if (act == 'Delete') {
+        onResp = function () {
+          $outer.remove();
+        }
+      }
+      // send request to do action
+      $.ajax({
+        url: '/action/'+act+$($ctrl.handle).attr('src'),
+        success: onResp || function (data) {}
+      });
+    });
+    function showCtrl () {
+      $ctrl.css('display', 'block');
+      $('.imgs .bottom-filler').css({
+        'height': $ctrl.outerHeight(true)+'px',
+        'display': 'block'
+      });
+    }
+    function hideCtrl () {
+      delete $ctrl.handle;
+      $ctrl.css('display', '');
+      $('.imgs .bottom-filler').css({
+        'display': 'none'
+      });
+    }
+  };
+  $(document).on('ready page:load', initImgs);
+</script>

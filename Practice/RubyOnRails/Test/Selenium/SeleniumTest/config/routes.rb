@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get '/vt/browse' => 'visual_testing#show', as: :browseempty
+  get '/vt/browse/*path.png' => 'visual_testing#img'
+  get '/vt/browse/*path' => 'visual_testing#show', as: :browse
+  get '/action/:act/*path.png' => 'visual_testing#act'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
