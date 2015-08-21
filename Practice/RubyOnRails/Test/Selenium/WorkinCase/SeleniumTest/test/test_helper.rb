@@ -256,6 +256,6 @@ class MiniTest::CompositeReporter
     end
     # chmod if run by local
     # or runner should take care of it
-    FileUtils.chmod_R 0777, File.join(Rails.root, "test", "visualTesting", 'local') if !ENV['runner']
+    begin FileUtils.chmod_R 0777, File.join(Rails.root, "test", "visualTesting", "local") if !ENV['runner'] rescue puts 'ignored chmod err @test_hleper.rb' end
   end
 end
