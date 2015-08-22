@@ -30,7 +30,7 @@ also remember run rails app in another terminal window
     rails s
 
 NOTE: For correct output information, you need to modify test_helper.rb#L234[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L234]
- and test_helper.rb#L248[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L248] based on URL/Port of your environment
+and test_helper.rb#L248[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L248] based on URL/Port of your environment
 
 Then you can create a Jenkins Job as below.
 
