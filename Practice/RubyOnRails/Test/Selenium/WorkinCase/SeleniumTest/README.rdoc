@@ -21,22 +21,22 @@ For more information about variables please refer to Jenkins Content below.
 
 * This build is parameterized
 
+There are four parameters, cases, browsers, pageurl and skipRealDiff
 
-    Parameter name
-    cases
-    Parameter type
-    String
-    Parameter desc
-    test case name, quoted with single quote, separated with comma
-    Parameter default
+
+cases, Type: String, Usage: used to specify a set of test cases to run.
+
+    Default value
     ['simple_test']
+    Desc
+    test case name, quoted with single quote, separated with comma
 
 
-    Parameter name
-    browsers
-    Parameter type
-    String
-    Parameter desc
+browsers, Type: String, Usage: used to specify a set of remote browsers to test.
+
+    Default value
+    [{'url' => '192.168.31.169'}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]
+    Desc
     # usage:
     # [{'url' => 'remote url', 'port' => 'port number', 'browser' => 'browser name', 'caps' => capabilities_hash}, ...]
     
@@ -53,29 +53,25 @@ For more information about variables please refer to Jenkins Content below.
     # [{'url' => '192.168.31.169','browser' => 'chrome'}, {'url' => '192.168.31.169', 'port' => '5555', 'browser' => 'opera'}]
     # 
     # [{'url' => '192.168.31.169','browser' => 'chrome', 'caps' => {'chromeOptions' => {'args' => ['--ignore-certificate-errors', '--disable-popup-blocking', '--disable-translate', '--test-type']}}}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]
-    Parameter default
-    [{'url' => '192.168.31.169'}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]
 
-    Parameter name
-    pageurl
-    Parameter type
-    String
-    Parameter desc
-    domain url including port of web server
-    Parameter default
+
+pageurl, Type: String, Usage: provide a way to set the URL of Web Page to connect.
+
+    Default value
     http://192.168.31.169:8080
+    Desc
+    domain url including port of web server
 
-    Parameter name
-    skipRealDiff
-    Parameter type
-    String
-    Parameter desc
+
+skipRealDiff, Type: String, Usage: specify whether skip image processing.
+
+    Default value
+    true
+    Desc
     whether skip diff process, just compare binary file (will be much faster)
     any value will be faise except 'true'
-    Parameter default
-    true
 
-* build step (Execute shell)
+* Build step (Execute shell)
 
     # go to folder of test rails app
     cd /home/benbai/Things/data/github/RubyOnRails/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest
