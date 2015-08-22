@@ -4,93 +4,91 @@
 
 * How to run the test suite
 
-```
-rake test:fileset
-```
+
+    rake test:fileset
+
 
 For more information about variables please refer to Jenkins Content below.
 
 * Deployment instructions
 
-```
-TODO
-```
+
+    TODO
+
 
 == Jenkins Job Settings
 
 
 * This build is parameterized
 
-```
-Parameter name
-cases
-Parameter type
-String
-Parameter desc
-test case name, quoted with single quote, separated with comma
-Parameter default
-['simple_test']
-```
-```
-Parameter name
-browsers
-Parameter type
-String
-Parameter desc
-# usage:
-# [{'url' => 'remote url', 'port' => 'port number', 'browser' => 'browser name', 'caps' => capabilities_hash}, ...]
 
-# url: required, url of remote selnium server
-# port: optional, default '4444'
-# browser: optional, default 'firefox', also supports 'internet_explorer', 'chrome', 'opera'
-# caps: optional, will override desired capabilities if provided
+    Parameter name
+    cases
+    Parameter type
+    String
+    Parameter desc
+    test case name, quoted with single quote, separated with comma
+    Parameter default
+    ['simple_test']
 
-# e.g.
-# [{'url' => '192.168.31.169'}]
-# 
-# [{'url' => '192.168.31.169'}, {'url' => '192.168.31.169', 'port' => '5555', 'browser' => 'opera'}]
-# 
-# [{'url' => '192.168.31.169','browser' => 'chrome'}, {'url' => '192.168.31.169', 'port' => '5555', 'browser' => 'opera'}]
-# 
-# [{'url' => '192.168.31.169','browser' => 'chrome', 'caps' => {'chromeOptions' => {'args' => ['--ignore-certificate-errors', '--disable-popup-blocking', '--disable-translate', '--test-type']}}}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]
-Parameter default
-[{'url' => '192.168.31.169'}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]
-```
-```
-Parameter name
-pageurl
-Parameter type
-String
-Parameter desc
-domain url including port of web server
-Parameter default
-http://192.168.31.169:8080
-```
-```
-Parameter name
-skipRealDiff
-Parameter type
-String
-Parameter desc
-whether skip diff process, just compare binary file (will be much faster)
-any value will be faise except 'true'
-Parameter default
-true
-```
+
+    Parameter name
+    browsers
+    Parameter type
+    String
+    Parameter desc
+    # usage:
+    # [{'url' => 'remote url', 'port' => 'port number', 'browser' => 'browser name', 'caps' => capabilities_hash}, ...]
+    
+    # url: required, url of remote selnium server
+    # port: optional, default '4444'
+    # browser: optional, default 'firefox', also supports 'internet_explorer', 'chrome', 'opera'
+    # caps: optional, will override desired capabilities if provided
+    
+    # e.g.
+    # [{'url' => '192.168.31.169'}]
+    # 
+    # [{'url' => '192.168.31.169'}, {'url' => '192.168.31.169', 'port' => '5555', 'browser' => 'opera'}]
+    # 
+    # [{'url' => '192.168.31.169','browser' => 'chrome'}, {'url' => '192.168.31.169', 'port' => '5555', 'browser' => 'opera'}]
+    # 
+    # [{'url' => '192.168.31.169','browser' => 'chrome', 'caps' => {'chromeOptions' => {'args' => ['--ignore-certificate-errors', '--disable-popup-blocking', '--disable-translate', '--test-type']}}}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]
+    Parameter default
+    [{'url' => '192.168.31.169'}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]
+
+    Parameter name
+    pageurl
+    Parameter type
+    String
+    Parameter desc
+    domain url including port of web server
+    Parameter default
+    http://192.168.31.169:8080
+
+    Parameter name
+    skipRealDiff
+    Parameter type
+    String
+    Parameter desc
+    whether skip diff process, just compare binary file (will be much faster)
+    any value will be faise except 'true'
+    Parameter default
+    true
+
 * build step (Execute shell)
-```
-# go to folder of test rails app
-cd /home/benbai/Things/data/github/RubyOnRails/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest
 
-# run test case, all images of visual testing will be stored in test/visualTesting/Jenkins
-failedmark=$BUILD_NUMBER skipRealDiff=$skipRealDiff task_filename=$BUILD_TAG runner="Jenkins" pageurl=$pageurl cases=$cases browsers=$browsers rake test:fileset
+    # go to folder of test rails app
+    cd /home/benbai/Things/data/github/RubyOnRails/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest
+    
+    # run test case, all images of visual testing will be stored in test/visualTesting/Jenkins
+    failedmark=$BUILD_NUMBER skipRealDiff=$skipRealDiff task_filename=$BUILD_TAG runner="Jenkins" pageurl=$pageurl cases=$cases browsers=$browsers rake test:fileset
+    
+    # chmod so other user can manage images created by jenkins
+    chmod -R 777 test/visualTesting/Jenkins
+    
+    # mark build as failed if the file test/failed/$BUILD_NUMBER.txt exists
+    if [ -f test/failed/$BUILD_NUMBER.txt ]; then
+        rm -rf test/failed/$BUILD_NUMBER.txt
+        exit -1
+    fi
 
-# chmod so other user can manage images created by jenkins
-chmod -R 777 test/visualTesting/Jenkins
-
-# mark build as failed if the file test/failed/$BUILD_NUMBER.txt exists
-if [ -f test/failed/$BUILD_NUMBER.txt ]; then
-    rm -rf test/failed/$BUILD_NUMBER.txt
-    exit -1
-fi
-```
