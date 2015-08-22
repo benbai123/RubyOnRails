@@ -26,6 +26,8 @@ There are four parameters, cases, browsers, pageurl and skipRealDiff
 
 cases, Type: String, Usage: used to specify a set of test cases to run.
 
+Required? False, will run all test case under test/integration if missing.
+
     Default value
     ['simple_test']
     Desc
@@ -33,6 +35,8 @@ cases, Type: String, Usage: used to specify a set of test cases to run.
 
 
 browsers, Type: String, Usage: used to specify a set of remote browsers to test.
+
+Required? True if run with Jenkins since Jenkins can only run with Remote WebDriver. False if run with terminal.
 
     Default value
     [{'url' => '192.168.31.169'}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]
@@ -57,6 +61,12 @@ browsers, Type: String, Usage: used to specify a set of remote browsers to test.
 
 pageurl, Type: String, Usage: provide a way to set the URL of Web Page to connect.
 
+Required? False, just use it as needed.
+
+If you specified it, you can get it by calling getPageURL in test case (if extends ActionDispatch::IntegrationTest), see
+
+test_helper.rb#L189[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L189]
+
     Default value
     http://192.168.31.169:8080
     Desc
@@ -64,6 +74,10 @@ pageurl, Type: String, Usage: provide a way to set the URL of Web Page to connec
 
 
 skipRealDiff, Type: String, Usage: specify whether skip image processing.
+
+Required? False, will do image processing and probably take a loooong time if imssing.
+
+Most of the time is caused by ChunkyPNG::Image.from_file since decoding PNG files is slow.
 
     Default value
     true
