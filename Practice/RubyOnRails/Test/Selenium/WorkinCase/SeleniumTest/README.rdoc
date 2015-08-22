@@ -1,36 +1,27 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
+* Ruby version 2.1
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+rake test:fileset
+```
+
+For more information about variables please refer to Jenkins Content below.
 
 * Deployment instructions
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+```
+TODO
+```
 
 == Jenkins Job Settings
 
+
 * This build is parameterized
 
+```
 Parameter name
 cases
 Parameter type
@@ -39,7 +30,8 @@ Parameter desc
 test case name, quoted with single quote, separated with comma
 Parameter default
 ['simple_test']
-
+```
+```
 Parameter name
 browsers
 Parameter type
@@ -63,7 +55,8 @@ Parameter desc
 # [{'url' => '192.168.31.169','browser' => 'chrome', 'caps' => {'chromeOptions' => {'args' => ['--ignore-certificate-errors', '--disable-popup-blocking', '--disable-translate', '--test-type']}}}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]
 Parameter default
 [{'url' => '192.168.31.169'}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]
-
+```
+```
 Parameter name
 pageurl
 Parameter type
@@ -72,7 +65,8 @@ Parameter desc
 domain url including port of web server
 Parameter default
 http://192.168.31.169:8080
-
+```
+```
 Parameter name
 skipRealDiff
 Parameter type
@@ -82,8 +76,9 @@ whether skip diff process, just compare binary file (will be much faster)
 any value will be faise except 'true'
 Parameter default
 true
-
+```
 * build step (Execute shell)
+```
 # go to folder of test rails app
 cd /home/benbai/Things/data/github/RubyOnRails/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest
 
@@ -98,3 +93,4 @@ if [ -f test/failed/$BUILD_NUMBER.txt ]; then
     rm -rf test/failed/$BUILD_NUMBER.txt
     exit -1
 fi
+```
