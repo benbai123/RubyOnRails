@@ -10,7 +10,11 @@
 
 For more information about variables please refer to Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/README.rdoc#jenkins-job-settings] below.
 
-* Deployment instructions
+To run it quickly from terminal, please refer to Deployment_Instructions[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/README.rdoc#deployment-instructions].
+
+To run it with Jenkins on real (not headless) browser, please refer to Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/README.rdoc#Run-With-Remote-WebDriver]
+
+=== Deployment Instructions
 
 At first, you need to install Rails 4.1, on Ubuntu 14.04 the commands are:
 
@@ -58,10 +62,14 @@ Then you can create a Jenkins Job as below.
 
 For more information, please refer to Selenium with Rails -- The Working Case (http://happy-rails-trial.blogspot.tw/2015/08/selenium-with-rails-working-case.html)
 
-== Jenkins Job Settings
+=== Run With Remote WebDriver
+
+    TODO
+
+=== Jenkins Job Settings
 
 
-* This build is parameterized
+==== This build is parameterized
 
 There are four parameters, cases, browsers, pageurl and skipRealDiff
 
@@ -127,7 +135,7 @@ Most of the time is caused by ChunkyPNG::Image.from_file since decoding PNG file
     whether skip diff process, just compare binary file (will be much faster)
     any value will be faise except 'true'
 
-* Build step (Execute shell)
+==== Build step (Execute shell)
 
     # go to folder of test rails app
     cd /home/benbai/Things/data/github/RubyOnRails/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest
