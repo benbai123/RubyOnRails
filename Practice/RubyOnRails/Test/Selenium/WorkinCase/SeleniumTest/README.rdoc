@@ -8,11 +8,11 @@
     rake test:fileset
 
 
-For more information about variables please refer to Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/README.rdoc#jenkins-job-settings] below.
+For more information about variables please refer to Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings] below.
 
-To run it quickly from terminal, please refer to Deployment_Instructions[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/README.rdoc#deployment-instructions].
+To run it quickly from terminal, please refer to Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions].
 
-To run it with Jenkins on real (not headless) browser, please refer to Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/README.rdoc#Run-With-Remote-WebDriver]
+To run it with Jenkins on real (not headless) browser, please refer to Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
 
 === Deployment Instructions
 
