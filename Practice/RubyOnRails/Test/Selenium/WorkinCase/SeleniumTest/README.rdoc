@@ -12,6 +12,28 @@ For more information about variables please refer to Jenkins Content below.
 
 * Deployment instructions
 
+At first, you need to install Rails 4.1, on Ubuntu 14.04 the commands are:
+
+    # Install ruby 2.1
+    sudo add-apt-repository ppa:brightbox/ruby-ng
+    sudo apt-get update
+    sudo apt-get install ruby2.1
+    
+    # Install ruby Dev-Kit
+    sudo apt-get install ruby2.1-dev
+    
+    # Install sqlite3 (but no DB Needed for this project)
+    sudo apt-get install sqlite3
+    
+    # Install sqlite3 Dev-Kit
+    sudo apt-get install libsqlite3-dev
+    
+    # Install nodejs (javascript-runtime)
+    sudo apt-get install nodejs
+    
+    # Install Rails
+    sudo gem install rails -v "=4.1"
+
 Clone this repository then you should be able to run it from terminal:
     
     # clone repository
