@@ -8,7 +8,7 @@
     rake test:fileset
 
 
-For more information about variables please refer to Jenkins Content below.
+For more information about variables please refer to Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/README.rdoc#jenkins-job-settings] below.
 
 * Deployment instructions
 
