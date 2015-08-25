@@ -25,33 +25,26 @@ class ActiveSupport::TestCase
     while reTest do
       reTest = false
       begin
-        if test_case.class.method_defined? :doTest
-          test_case.doTest(driver)
-        end
+        test_case.doTest(driver)
       rescue Assertion => e
-        # cache assertion error to get dailed cases
-        # remove last '.rb'
-        filename = test_case.get_filename.split('.rb').join('.rb')
-        @@failedCases << filename if !@@failedCases.include? filename
-        # still raise error
-        raise e
+        reTest = self.handle_error test_case, driver, e
       rescue => error
-        # remove last '.rb'
-        filename = test_case.get_filename.split('.rb').join('.rb')
-        @@failedCases << filename if !@@failedCases.include? filename
-        if ENV['autoretest']
-          reTest = true
-          if test_case.class.method_defined? :reset
-            test_case.reset(driver, error)
-          end
-        else
-          raise error
-        end
+        reTest = self.handle_error test_case, driver, error
       ensure
-        if test_case.class.method_defined? :finish
-          test_case.finish(driver) unless reTest
-        end
+        test_case.finish(driver) unless reTest
       end
+    end
+  end
+  def self.handle_error test_case, driver, error
+    if ENV['autoretest']
+      test_case.reset(driver, error)
+      return true
+    else
+      # remove last '.rb'
+      filename = test_case.get_filename.split('.rb').join('.rb')
+      # put it into failed cases
+      @@failedCases << filename if !@@failedCases.include? filename
+      raise error
     end
   end
   def self.seleniumTest (test_case)
@@ -160,6 +153,10 @@ class ActiveSupport::TestCase
       end
     end
   end
+  def self.get_visualtesting_link path
+    # split and join to remove first
+    return 'http://192.168.31.218:3000/vt/browse/visualTesting'+path.split('visualTesting').from(1).join('visualTesting')
+  end
 end
 ##
 # default methods for test cases
@@ -231,7 +228,7 @@ class MiniTest::CompositeReporter
       puts ''
       puts 'all base images to convert this run: '
       cimgs.each do |cimg|
-        puts 'http://192.168.31.218:3000/vt/browse/visualTesting'+cimg.split('visualTesting').from(1).join('visualTesting')
+        puts ActiveSupport::TestCase.get_visualtesting_link cimg
       end
       puts ''
       puts ''
@@ -245,7 +242,7 @@ class MiniTest::CompositeReporter
       if failed_vt
         puts 'including failed visual testing, view imgs at:'
         failed_vt.each do |fvt|
-          puts 'http://192.168.31.218:3000/vt/browse/visualTesting'+fvt.split('visualTesting').from(1).join('visualTesting')
+          puts ActiveSupport::TestCase.get_visualtesting_link fvt
         end
       end
     end

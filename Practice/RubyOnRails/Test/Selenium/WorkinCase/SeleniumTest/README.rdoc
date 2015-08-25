@@ -1,6 +1,6 @@
 == README
 
-=== Thie rdoc is under working, will be finished before 9/11 (I guess), you can give it a try now however.
+=== This rdoc is under working, will be finished before 9/11 (I guess), you can give it a try now however.
 
 === Introduction
 
@@ -18,9 +18,9 @@ Let Rails Developers can run Selenium Browser Automation easily in less than 1 h
 
 === Outline
 
-For more information about variables please refer to Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings] below.
-
 To run it quickly from terminal, please refer to Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions].
+
+For more information about variables please refer to Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings] below.
 
 To run it with Jenkins on real (not headless) browser, please refer to Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
 
@@ -86,8 +86,7 @@ You probably want to run rails app with user jenkins for permission issue:
     # start rails app by user jenkins
     rails s
 
-NOTE: For correct output information, you need to modify test_helper.rb#L234[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L234]
-and test_helper.rb#L248[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L248] based on URL/Port of your environment
+NOTE: For correct output information, you need to modify test_helper.rb#L158[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L158] based on URL/Port of your environment
 
 Then you can create a Jenkins Job and run with remote webdriver as below.
 
@@ -153,7 +152,7 @@ Required? False, just use it as needed.
 
 If you specified it, you can get it by calling getPageURL in test case (if extends ActionDispatch::IntegrationTest), see
 
-test_helper.rb#L189[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L189]
+test_helper.rb#L186[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L186]
 
     Default value
     http://192.168.31.169:8080

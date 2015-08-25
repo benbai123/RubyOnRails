@@ -96,6 +96,16 @@ class ActiveSupport::VisualTestingHelper
       vt_cnt['to_conv'] << [baseImg, cbaseImg, cnt['parent_dir']] if !File.exist?(cbaseImg)
       vt_cnt['to_diff'] = [] if !vt_cnt['to_diff']
       vt_cnt['to_diff'] << [baseImg, newImg, cbaseImg, diffImg, case_name, cnt['parent_dir']]
+      if ENV['autoretest']
+        # do a fast diff and marke case as failed if need auto retest
+        if !self.diff_img baseImg, newImg, cbaseImg, diffImg, true
+          @@failedCases = ActiveSupport::TestCase.faled_cases
+          @@failedCases << case_name if !@@failedCases.include? case_name
+          puts 'Current screenshot is different with base image! See images at '
+          puts '    '+ActiveSupport::TestCase.get_visualtesting_link(cnt['parent_dir'])
+          raise 'Image Different!'
+        end
+      end
     end
   end
   def self.convert_rgba (src, dest)
@@ -103,11 +113,11 @@ class ActiveSupport::VisualTestingHelper
     img = ChunkyPNG::Image.from_file(src)
     img.save(dest, :fast_rgba)
   end
-  def self.diff_img (baseImg, currImg, rgba, diffImg)
+  def self.diff_img (baseImg, currImg, rgba, diffImg, skipReal=false)
     File.delete(diffImg) if File.exist?(diffImg)
     # much faster than load image to compare
     return true if FileUtils.compare_file(baseImg, currImg)
-    if 'true'.eql?(ENV['skipRealDiff'])
+    if 'true'.eql?(ENV['skipRealDiff']) || skipReal
       return false
     end
     # really want to load image to compare?
