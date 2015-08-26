@@ -155,7 +155,7 @@ class ActiveSupport::TestCase
   end
   def self.get_visualtesting_link path
     # split and join to remove first
-    return 'http://192.168.31.218:3000/vt/browse/visualTesting'+path.split('visualTesting').from(1).join('visualTesting')
+    return 'http://192.168.31.225:3000/vt/browse/visualTesting'+path.split('visualTesting').from(1).join('visualTesting')
   end
 end
 ##

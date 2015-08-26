@@ -22,7 +22,12 @@ To run it quickly from terminal, please refer to Deployment_Instructions[https:/
 
 For more information about variables please refer to Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings] below.
 
-To run it with Jenkins on real (not headless) browser, please refer to Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
+To run it with remote Selenium Standalone Server, please refer to Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
+
+To run it with Jenkins, please refer to
+Run_With_Jenkins[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-jenkins]
+
+For more information, please refer to Selenium with Rails -- The Working Case (http://happy-rails-trial.blogspot.tw/2015/08/selenium-with-rails-working-case.html)
 
 === Deployment Instructions
 
@@ -50,12 +55,25 @@ At first, you need to install Rails 4.1, the commands on Ubuntu 14.04 are:
 
 Then clone this repository, after that you should be able to run it from terminal:
     
+    # install git
+    sudo apt-get install git
     # clone repository
     git clone https://github.com/benbai123/RubyOnRails.git
     # go to this project
     cd RubyOnRails/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest
     # bundle install
     bundle install
+    
+    # For correct output information, modify
+    # test/test_helper.rb#L158 based on
+    # URL/Port of your environment
+    
+    # get IP information from terminal
+    ifconfig
+    # modify test/test_helper.rb
+    gedit test/test_helper.rb
+    # than close gedit and continue
+    
     # run all integration test with the customized flow
     rake test:fileset
     # or run all specified cases (under test/integration)
@@ -71,7 +89,10 @@ also remember run rails app in another terminal window
     #
     rails s
 
-You probably want to run rails app with user jenkins for permission issue:
+You can also refer to the short video contains whole process above:
+Rails_Selenium_Working_Case_Deployment_Instructions[https://www.youtube.com/watch?v=vnXCo-JBfLg]
+
+If you run test cases with Jenkins often, you probably will want to run rails app with user jenkins for permission issue (Regarding to manage images from visual testing):
 
     # cd to rails project folder first
      
@@ -88,22 +109,22 @@ You probably want to run rails app with user jenkins for permission issue:
 
 NOTE: For correct output information, you need to modify test_helper.rb#L158[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L158] based on URL/Port of your environment
 
-Then you can create a Jenkins Job and run with remote webdriver as below.
-
-For more information, please refer to Selenium with Rails -- The Working Case (http://happy-rails-trial.blogspot.tw/2015/08/selenium-with-rails-working-case.html)
-
 === Run With Remote WebDriver
+
+==== Start Selenium-Standalone-Server
+
+==== Run with browsers arguments
+
+=== Run With Jenkins
 
 ==== Install Jenkins
 
 ==== Create Jenkins Job
 
-==== Start Selenium-Standalone-Server
-
 ==== Run it by Jenkins
 
-=== Jenkins Job Settings
 
+=== Jenkins Job Settings
 
 ==== This build is parameterized
 
