@@ -18,14 +18,14 @@ Let Rails Developers can run Selenium Browser Automation easily in less than 1 h
 
 === Outline
 
-To run it quickly from terminal at local machine, please refer to Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions].
+To run it quickly from terminal, please refer to Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions].
 
-To run it with Remote WebDriver to test Selenium Standalone Server on Remote (or Local) machine, please refer to Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
+For more information about variables please refer to Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings] below.
+
+To run it with remote Selenium Standalone Server, please refer to Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
 
 To run it with Jenkins, please refer to
 Run_With_Jenkins[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-jenkins]
-
-For more information about variables please refer to Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings].
 
 For more information, please refer to Selenium with Rails -- The Working Case (http://happy-rails-trial.blogspot.tw/2015/08/selenium-with-rails-working-case.html)
 
@@ -143,7 +143,7 @@ Go to ubuntu_folder[https://github.com/benbai123/RubyOnRails/tree/192b8cb53e4ac3
 
 Then run selenium/startup.sh to launch Selenium Standalone Server, it supports only Firefox.
 
-==== Run with "browsers" parameter
+==== Run with browsers arguments
 
 Assume you have started Selenium Standalone Server with startup.bat and startOpera.bat on Windows, your IP is 192.168.31.169, then you can test IE and Opera by specify a 'browsers' array as below:
 
