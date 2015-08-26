@@ -147,12 +147,12 @@ Then run selenium/startup.sh to launch Selenium Standalone Server, it supports o
 
 Assume you have started Selenium Standalone Server with startup.bat and startOpera.bat on Windows, your IP is 192.168.31.169, then you can test IE and Opera by specify a 'browsers' array as below:
 
-	browsers="[{'url' => '192.168.31.169', 'port' => '5555', 'browser' => 'opera'}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]" rake test:fileset
+    browsers="[{'url' => '192.168.31.169', 'port' => '5555', 'browser' => 'opera'}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]" rake test:fileset
 
 
-The short vidwo below shows how to start server on windows and test it remotely (assume you already installed Github_Desktop[https://desktop.github.com/] or something else and has shell to use):
+The short vidwo below shows how to start server on windows and test it remotely (assume you already installed Github_Desktop[https://desktop.github.com/] or something else and has git-shell to use):
 
-    TODO add video
+Rails_Selenium_Working_Case_Run_With_Remote_WebDriver[https://www.youtube.com/watch?v=tBdpj0CDz9Q]
 
 === Run With Jenkins
 
