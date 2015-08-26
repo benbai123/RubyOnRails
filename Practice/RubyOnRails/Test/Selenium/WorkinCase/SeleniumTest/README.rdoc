@@ -113,7 +113,46 @@ NOTE: For correct output information, you need to modify test_helper.rb#L158[htt
 
 ==== Start Selenium-Standalone-Server
 
+There are already some ready-to-use resources in this repo (but not in this project).
+
+The first step is still clone this project if needed, then
+
+* For Windows
+
+Go to win_folder[https://github.com/benbai123/RubyOnRails/tree/192b8cb53e4ac355ed7407930cf4688fb99724a9/Practice/RubyOnRails/Test/Selenium/SeleniumTest/vendor/win_folder]
+
+Then simply double-click selenium/*.bat to launch Selenium Standalone Server.
+
+selenium/startup.bat[https://github.com/benbai123/RubyOnRails/blob/192b8cb53e4ac355ed7407930cf4688fb99724a9/Practice/RubyOnRails/Test/Selenium/SeleniumTest/vendor/win_folder/selenium/startup.bat]
+
+Port 4444, Support IE, Chrome and Firefox Portable v_38.
+
+selenium/startOpera.bat[https://github.com/benbai123/RubyOnRails/blob/192b8cb53e4ac355ed7407930cf4688fb99724a9/Practice/RubyOnRails/Test/Selenium/SeleniumTest/vendor/win_folder/selenium/startOpera.bat]
+
+Port 5555, Support IE, Opera and Firefox Portable v_39.
+
+selenium/startup64.bat[https://github.com/benbai123/RubyOnRails/blob/192b8cb53e4ac355ed7407930cf4688fb99724a9/Practice/RubyOnRails/Test/Selenium/SeleniumTest/vendor/win_folder/selenium/startup64.bat]
+
+Port 4444, Support 64-bit IE, Chrome and Firefox Portable v_38.
+
+You can start multiple Selenium Standalone Server on different ports if needed.
+
+* For Ubuntu
+
+Go to ubuntu_folder[https://github.com/benbai123/RubyOnRails/tree/192b8cb53e4ac355ed7407930cf4688fb99724a9/Practice/RubyOnRails/Test/Selenium/SeleniumTest/vendor/ubuntu_folder]
+
+Then run selenium/startup.sh to launch Selenium Standalone Server, it supports only Firefox.
+
 ==== Run with browsers arguments
+
+Assume you have started Selenium Standalone Server with startup.bat and startOpera.bat on Windows, your IP is 192.168.31.169, then you can test IE and Opera by specify a 'browsers' array as below:
+
+	browsers="[{'url' => '192.168.31.169', 'port' => '5555', 'browser' => 'opera'}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]" rake test:fileset
+
+
+The short vidwo below shows how to start server on windows and test it remotely (assume you already installed Github_Desktop[https://desktop.github.com/] or something else and has shell to use):
+
+    TODO add video
 
 === Run With Jenkins
 
