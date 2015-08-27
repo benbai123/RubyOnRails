@@ -27,6 +27,10 @@ To run it with Jenkins, please refer to
 Run_With_Jenkins[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-jenkins]
 
 
+For more detail with respect to Visual Testing, please refer to
+Detail_of_Visual_Testing[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#detail-of-visual-testing]
+
+
 For more information about variables please refer to Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings].
 
 Regarding frequently used Selenium functions in Ruby, please refer to selenium_methods_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/SeleniumTest/test/integration/selenium_methods_test.rb] and Ruby_Bindings[https://code.google.com/p/selenium/wiki/RubyBindings]
@@ -289,3 +293,34 @@ NOTE: update the path of first cd as needed.
         exit -1
     fi
 
+=== Detail of Visual Testing
+
+===== Sample Case
+
+    TODO Add sample test case
+
+===== Demo Video
+
+    TODO Add demo video
+
+===== Describe in detail
+
+In any test case, you can do visual testing by call ActiveSupport::VisualTestingHelper.init_vt[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/visual_testing_helper.rb#L23] once (should be called only once in whole test case), passing driver into it to initiate Visual Testing, then call ActiveSupport::VisualTestingHelper.shot[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/visual_testing_helper.rb#L57] and passing driver into it to take screenshot.
+
+
+The init method will initiate image count and related folder path for a test case with current driver information.
+
+
+The shot method will take a screenshot, and check whether there is already a "base image" based on the information including image count and folder path. If there is no "base image", the method store current shot as "base image" and convert it to rgba format after all test cases done. If there is already a "base image", the method store current shot as "new image", diff it with current "base image" and create a "diff image" if needed.
+
+You can call shot method multiple times, the image count will increase automatically except you call "init" method again (should not do this).
+
+
+If the parameter 
+    skipRealDiff="true"
+is specified, the process of convert "base image" will be skipped, the process of diff "new image" with "base image" will only do binary file compare and will not output "diff image". 
+
+NOTE: Currently the information is stored with case name, you will need to modify this if you run a case with different drivers parallel.
+
+
+Once you modified visual testing code (e.g., removed a shot method so the number of image changed) you will need to remove whole folder of base images to recapture base images, or handle it by the rails manage page.
