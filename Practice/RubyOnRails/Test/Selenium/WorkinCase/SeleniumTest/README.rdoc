@@ -180,10 +180,11 @@ First need to install Jenkins with a few commands:
 Now you can link to jenkins at localhost and start to use it:
 
 http://localhost:8080/
+(The first time probably load longer)
 
 ==== Create Jenkins Job
 
-From Jenkins dashboard, click New Project, select free style project and fill the fields as described in Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings]
+From Jenkins dashboard, click New Item, select Freestyle project and fill the fields as described in Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings]
 
 ==== Run it by Jenkins
 
