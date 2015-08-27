@@ -297,11 +297,11 @@ NOTE: update the path of first cd as needed.
 
 ===== Sample Case
 
-    TODO Add sample test case
+visual_testing_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/integration/visual_testing_test.rb]
 
 ===== Demo Video
 
-    TODO Add demo video
+Rails_Selenium_Detail_of_Visual_Testing[https://www.youtube.com/watch?v=numB7dTUI50]
 
 ===== Describe in detail
 
@@ -319,6 +319,7 @@ You can call shot method multiple times, the image count will increase automatic
 If the parameter 
     skipRealDiff="true"
 is specified, the process of convert "base image" will be skipped, the process of diff "new image" with "base image" will only do binary file compare and will not output "diff image". 
+
 
 NOTE: Currently the information is stored with case name, you will need to modify this if you run a case with different drivers parallel.
 

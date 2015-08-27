@@ -11,6 +11,7 @@ class VisualTestingTest < ActionDispatch::IntegrationTest
     #   resize window not works on chrome
     driver.manage.window.move_to(0, 0)
     driver.manage.window.resize_to(800, 600)
+
     # Need to call init_vt method once before call
     # shot method
     ActiveSupport::VisualTestingHelper.init_vt(driver)
@@ -24,9 +25,6 @@ class VisualTestingTest < ActionDispatch::IntegrationTest
     input_and_shot 'ab', q, driver
     input_and_shot 'cd', q, driver
     input_and_shot 'ef', q, driver
-    # input_and_shot 'ab', q, driver
-    # input_and_shot '34', q, driver
-    # input_and_shot '56', q, driver
   end
   def input_and_shot str, q, driver
     # send str to input field
@@ -36,6 +34,7 @@ class VisualTestingTest < ActionDispatch::IntegrationTest
     driver.execute_script('arguments[0].blur()', q)
     # pause for human eye
     sleep 0.3
+    # take screenshot
     ActiveSupport::VisualTestingHelper.shot(driver)
   end
 end
