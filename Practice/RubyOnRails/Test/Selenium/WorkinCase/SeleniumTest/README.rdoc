@@ -136,7 +136,7 @@ selenium/startOpera.bat[https://github.com/benbai123/RubyOnRails/blob/master/Pra
 Port 5555, Support IE, Opera and Firefox Portable v_39.
 
 selenium/startup64.bat[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/SeleniumTest/vendor/win_folder/selenium/startup64.bat]
-Port 4444, Support 64-bit IE, Chrome and Firefox Portable v_38.
+Port 4444, Support IE(64-bit), Chrome and Firefox Portable v_38.
 
 You can start multiple Selenium Standalone Server on different ports if needed.
 
@@ -164,7 +164,7 @@ Before you continue this part, make sure you have done previous two parts Deploy
 
 First need to install Jenkins with a few commands:
 
-# Install Oracle JDK/JRE
+    # Install Oracle JDK/JRE
     # (You can choose any other JDK/JRE you want)
     sudo apt-get install python-software-properties
     sudo add-apt-repository ppa:webupd8team/java
