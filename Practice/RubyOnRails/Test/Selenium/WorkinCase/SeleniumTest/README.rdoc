@@ -188,7 +188,7 @@ From Jenkins dashboard, click New Item, select Freestyle project and fill the fi
 
 ==== Run it by Jenkins
 
-From Project page, click Build with parameters and fill parameters as needed then run it.
+From Project page, click Build with parameters and fill/modify parameters as needed then run it.
 
 The short video below for this fragment:
 
@@ -264,6 +264,8 @@ Most of the time is caused by ChunkyPNG::Image.from_file since decoding PNG file
     any value will be faise except 'true'
 
 ==== Build step (Execute shell)
+
+NOTE: update the path of first cd as needed.
 
     # go to folder of test rails app
     cd /home/benbai/Things/data/github/RubyOnRails/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest
