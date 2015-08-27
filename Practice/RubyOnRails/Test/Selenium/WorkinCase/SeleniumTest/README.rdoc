@@ -21,12 +21,11 @@ Let anyone who can type in terminal and editor can run Selenium Browser Automati
 To run it quickly from terminal at local machine, please refer to Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions].
 
 To run it with Remote WebDriver to test with Selenium Standalone Server on Remote (or Local) machine, please refer to Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
-(Can skip this part if you just want to run it on local machine from terminal.)
+
 
 To run it with Jenkins, please refer to
 Run_With_Jenkins[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-jenkins]
-(Can skip this part if you just want to run it from terminal.)
-(NOTE: Jenkins or scheduled crontab can only test with Remote WebDriver except using headless browser)
+
 
 For more information about variables please refer to Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings].
 
@@ -118,7 +117,9 @@ NOTE: Just remind again, for correct output information, you need to modify test
 
 Before you continue this part, make sure you have done previous part Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions]
 
-==== Start Selenium-Standalone-Server
+(Can skip this part if you just want to run it on local machine from terminal.)
+
+===== Start Selenium-Standalone-Server
 
 There are already some ready-to-use resources in this repo (but not in this project).
 
@@ -145,7 +146,7 @@ You can start multiple Selenium Standalone Server on different ports if needed.
 Go to ubuntu_folder[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/SeleniumTest/vendor/ubuntu_folder]
 Then run selenium/startup.sh to launch Selenium Standalone Server, it supports only Firefox.
 
-==== Run with "browsers" parameter
+===== Run with "browsers" parameter
 
 Assume you have started Selenium Standalone Server with startup.bat and startOpera.bat on Windows, your IP is 192.168.31.169, then you can test IE and Opera by specify a 'browsers' array as below:
 
@@ -160,7 +161,10 @@ Rails_Selenium_Working_Case_Run_With_Remote_WebDriver[https://www.youtube.com/wa
 
 Before you continue this part, make sure you have done previous two parts Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions] and Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
 
-==== Install Jenkins
+(Can skip this part if you just want to run it from terminal.)
+(NOTE: Jenkins or scheduled crontab can only test with Remote WebDriver except using headless browser)
+
+===== Install Jenkins
 
 First need to install Jenkins with a few commands:
 
@@ -182,11 +186,11 @@ Now you can link to jenkins at localhost and start to use it:
 http://localhost:8080/
 (The first time probably load longer)
 
-==== Create Jenkins Job
+===== Create Jenkins Job
 
 From Jenkins dashboard, click New Item, select Freestyle project and fill the fields as described in Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings]
 
-==== Run it by Jenkins
+===== Run it by Jenkins
 
 Change mode of the folder test/visualTesting first.
 
@@ -199,7 +203,7 @@ Rails_Selenium_Working_Case_Run_With_Jenkins[https://www.youtube.com/watch?v=9YN
 
 === Jenkins Job Settings
 
-==== This build is parameterized
+===== This build is parameterized
 
 There are four parameters, cases, browsers, pageurl and skipRealDiff
 
@@ -266,7 +270,7 @@ Most of the time is caused by ChunkyPNG::Image.from_file since decoding PNG file
     whether skip diff process, just compare binary file (will be much faster)
     any value will be faise except 'true'
 
-==== Build step (Execute shell)
+===== Build step (Execute shell)
 
 NOTE: update the path of first cd as needed.
 
