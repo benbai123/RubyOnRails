@@ -7,7 +7,7 @@
 This is a sample project regarding how to run Selenium Auto Testing with Rails and Jenkins.
 
 * Target
-Let Rails Developers can run Selenium Browser Automation easily in less than 1 hour (at least, on Ubuntu).
+Let anyone who can type in terminal and editor can run Selenium Browser Automation easily in less than 1 hour (at least, on Ubuntu).
 
 * Ruby version
 2.1
@@ -20,12 +20,17 @@ Let Rails Developers can run Selenium Browser Automation easily in less than 1 h
 
 To run it quickly from terminal at local machine, please refer to Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions].
 
-To run it with Remote WebDriver to test Selenium Standalone Server on Remote (or Local) machine, please refer to Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
+To run it with Remote WebDriver to test with Selenium Standalone Server on Remote (or Local) machine, please refer to Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
+(Can skip this part if you just want to run it on local machine from terminal.)
 
 To run it with Jenkins, please refer to
 Run_With_Jenkins[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-jenkins]
+(Can skip this part if you just want to run it from terminal.)
+(NOTE: Jenkins or scheduled crontab can only test with Remote WebDriver except using headless browser)
 
 For more information about variables please refer to Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings].
+
+Regarding frequently used Selenium functions in Ruby, please refer to selenium_methods_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/SeleniumTest/test/integration/selenium_methods_test.rb] and Ruby_Bindings[https://code.google.com/p/selenium/wiki/RubyBindings]
 
 For more information, please refer to Selenium with Rails -- The Working Case (http://happy-rails-trial.blogspot.tw/2015/08/selenium-with-rails-working-case.html)
 
@@ -107,9 +112,11 @@ If you run test cases with Jenkins often, you probably will want to run rails ap
     # start rails app by user jenkins
     rails s
 
-NOTE: For correct output information, you need to modify test_helper.rb#L158[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L158] based on URL/Port of your environment
+NOTE: Just remind again, for correct output information, you need to modify test_helper.rb#L158[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L158] based on URL/Port of your environment
 
 === Run With Remote WebDriver
+
+Before you continue this part, make sure you have done previous part Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions]
 
 ==== Start Selenium-Standalone-Server
 
@@ -120,19 +127,15 @@ The first step is still clone this project if needed, then
 * For Windows
 
 Go to win_folder[https://github.com/benbai123/RubyOnRails/tree/192b8cb53e4ac355ed7407930cf4688fb99724a9/Practice/RubyOnRails/Test/Selenium/SeleniumTest/vendor/win_folder]
-
 Then simply double-click selenium/*.bat to launch Selenium Standalone Server.
 
 selenium/startup.bat[https://github.com/benbai123/RubyOnRails/blob/192b8cb53e4ac355ed7407930cf4688fb99724a9/Practice/RubyOnRails/Test/Selenium/SeleniumTest/vendor/win_folder/selenium/startup.bat]
-
 Port 4444, Support IE, Chrome and Firefox Portable v_38.
 
 selenium/startOpera.bat[https://github.com/benbai123/RubyOnRails/blob/192b8cb53e4ac355ed7407930cf4688fb99724a9/Practice/RubyOnRails/Test/Selenium/SeleniumTest/vendor/win_folder/selenium/startOpera.bat]
-
 Port 5555, Support IE, Opera and Firefox Portable v_39.
 
 selenium/startup64.bat[https://github.com/benbai123/RubyOnRails/blob/192b8cb53e4ac355ed7407930cf4688fb99724a9/Practice/RubyOnRails/Test/Selenium/SeleniumTest/vendor/win_folder/selenium/startup64.bat]
-
 Port 4444, Support 64-bit IE, Chrome and Firefox Portable v_38.
 
 You can start multiple Selenium Standalone Server on different ports if needed.
@@ -140,7 +143,6 @@ You can start multiple Selenium Standalone Server on different ports if needed.
 * For Ubuntu
 
 Go to ubuntu_folder[https://github.com/benbai123/RubyOnRails/tree/192b8cb53e4ac355ed7407930cf4688fb99724a9/Practice/RubyOnRails/Test/Selenium/SeleniumTest/vendor/ubuntu_folder]
-
 Then run selenium/startup.sh to launch Selenium Standalone Server, it supports only Firefox.
 
 ==== Run with "browsers" parameter
@@ -150,18 +152,46 @@ Assume you have started Selenium Standalone Server with startup.bat and startOpe
     browsers="[{'url' => '192.168.31.169', 'port' => '5555', 'browser' => 'opera'}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]" rake test:fileset
 
 
-The short vidwo below shows how to start server on windows and test it remotely (assume you already installed Github_Desktop[https://desktop.github.com/] or something else and has git-shell to use):
+The short vidwo below shows how to start Selenium Standalone Server on windows and test it remotely (assume you already installed Github_Desktop[https://desktop.github.com/] or something else and has git-shell to use):
 
 Rails_Selenium_Working_Case_Run_With_Remote_WebDriver[https://www.youtube.com/watch?v=tBdpj0CDz9Q]
 
 === Run With Jenkins
 
+Before you continue this part, make sure you have done previous two parts Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions] and Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
+
 ==== Install Jenkins
+
+First need to install Jenkins with a few commands:
+
+# Install Oracle JDK/JRE
+    # (You can choose any other JDK/JRE you want)
+    sudo apt-get install python-software-properties
+    sudo add-apt-repository ppa:webupd8team/java
+    sudo apt-get update
+    sudo apt-get install oracle-java7-installer
+
+    # Install Jenkins
+    wget -q -O - https://jenkins-ci.org/debian/jenkins-ci.org.key | sudo apt-key add -
+    sudo sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
+    sudo apt-get update
+    sudo apt-get install jenkins
+
+Now you can link to jenkins at localhost and start to use it:
+
+http://localhost:8080/
 
 ==== Create Jenkins Job
 
+From Jenkins dashboard, click New Project, select free style project and fill the fields as described in Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings]
+
 ==== Run it by Jenkins
 
+From Project page, click Build with parameters and fill parameters as needed then run it.
+
+The short video below for this fragment:
+
+    TODO: add video
 
 === Jenkins Job Settings
 
