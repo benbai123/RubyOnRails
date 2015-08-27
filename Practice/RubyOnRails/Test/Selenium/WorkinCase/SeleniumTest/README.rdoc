@@ -194,9 +194,8 @@ Change mode of the folder test/visualTesting first.
 
 From Project page, click Build with parameters and fill/modify parameters as needed then run it.
 
-The short video below for this fragment:
-
-    TODO: add video
+The short video below for this part:
+Rails_Selenium_Working_Case_Run_With_Jenkins[https://www.youtube.com/watch?v=9YN2-CjIyUo]
 
 === Jenkins Job Settings
 
