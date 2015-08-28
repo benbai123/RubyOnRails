@@ -4,7 +4,7 @@
 This is a sample project regarding how to run Selenium Auto Testing with Rails from terminal or Jenkins.
 
 * Target
-Let anyone who can type in terminal and editor can run Selenium Browser Automation easily in less than 1 hour (at least, on Ubuntu).
+Let anyone who can type in terminal and editor can run Selenium Browser Automation easily in less than half hour (at least, on Ubuntu 14.04).
 
 * Ruby version
 2.1
@@ -15,28 +15,29 @@ Let anyone who can type in terminal and editor can run Selenium Browser Automati
 
 === Outline
 
-Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions] : Run it quickly from terminal at local machine.
+{Deployment Instructions}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions] : Run it quickly from terminal at local machine.
 
 
-Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver] : Run it with Remote WebDriver to test with Selenium Standalone Server on Remote (or Local) machine.
+{Run With Remote WebDriver}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver] : Run it with Remote WebDriver to test with Selenium Standalone Server on Remote (or Local) machine.
 
 
-Run_With_Jenkins[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-jenkins] : Run it with Jenkins.
+{Run With Jenkins}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-jenkins] : Run it with Jenkins.
 
 
-Detail_of_Visual_Testing[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#detail-of-visual-testing] : More detail with respect to Visual Testing.
+{Detail of Visual Testing}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#detail-of-visual-testing] : More detail with respect to Visual Testing.
 
 
-Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings] : More information about variables.
+{Jenkins Job Settings}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings] : More information about variables.
 
 
-selenium_methods_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/SeleniumTest/test/integration/selenium_methods_test.rb] and Ruby_Bindings[https://code.google.com/p/selenium/wiki/RubyBindings] : Frequently used Selenium functions in Ruby.
+selenium_methods_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/SeleniumTest/test/integration/selenium_methods_test.rb] and {Ruby Bindings}[https://code.google.com/p/selenium/wiki/RubyBindings] : Frequently used Selenium functions in Ruby.
 
 
-Make_Development_Assistant[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#make-development-assistant] : Use a hidden parameter "autoretest" to make test case works as an assistant.
+{Make Development Assistant}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#make-development-assistant] : Use a hidden parameter "autoretest" to make test case works as an assistant.
 
 
-For more information, please refer to Selenium with Rails -- The Working Case (http://happy-rails-trial.blogspot.tw/2015/08/selenium-with-rails-working-case.html)
+{Related Articles}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#related-articles] : Some of my blog post that related to this project, check them if you want to know more details and build / customize project yourself.
+
 
 ==== 　
 ==== 　
@@ -101,7 +102,7 @@ also remember run rails app in another terminal window
     rails s
 
 You can also refer to the short video contains whole process above:
-Rails_Selenium_Working_Case_Deployment_Instructions[https://www.youtube.com/watch?v=vnXCo-JBfLg]
+{Rails Selenium Working Case Deployment Instructions}[https://www.youtube.com/watch?v=vnXCo-JBfLg]
 
 If you run test cases with Jenkins often, you probably will want to run rails app with user jenkins for permission issue (Regarding to manage images from visual testing):
 
@@ -129,7 +130,7 @@ You can also remove test_sanity from class ActionDispatch::IntegrationTest and m
 ==== 　
 === Run With Remote WebDriver
 
-Before you continue this part, make sure you have done previous part Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions]
+Before you continue this part, make sure you have done previous part {Deployment Instructions}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions]
 
 
 Can skip this part if you just want to run it on local machine from terminal.
@@ -168,21 +169,21 @@ Assume you have started Selenium Standalone Server with startup.bat and startOpe
     browsers="[{'url' => '192.168.31.169', 'port' => '5555', 'browser' => 'opera'}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]" rake test:fileset
 
 
-The short vidwo below shows how to start Selenium Standalone Server on windows and test it remotely (assume you already installed Github_Desktop[https://desktop.github.com/] or something else and has git-shell to use):
+The short vidwo below shows how to start Selenium Standalone Server on windows and test it remotely (assume you already installed {Github Desktop}[https://desktop.github.com/] or something else and has git-shell to use):
 
-Rails_Selenium_Working_Case_Run_With_Remote_WebDriver[https://www.youtube.com/watch?v=tBdpj0CDz9Q]
+{Rails Selenium Working Case Run With Remote WebDriver}[https://www.youtube.com/watch?v=tBdpj0CDz9Q]
 
 ==== 　
 ==== 　
 === Run With Jenkins
 
-Before you continue this part, make sure you have done previous two parts Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions] and Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
+Before you continue this part, make sure you have done previous two parts {Deployment Instructions}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions] and {Run With Remote WebDriver}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
 
 
 Can skip this part if you just want to run it from terminal.
 
 
-<b>NOTE:</b> Jenkins or scheduled crontab can only test with Remote WebDriver except using headless browser, if you are interested, see How_to_run_rspec_tests_using_selenium_through_cron[http://stackoverflow.com/questions/7275932/how-to-run-rspec-tests-using-selenium-through-cron] for more information.
+<b>NOTE:</b> Jenkins or scheduled crontab can only test with Remote WebDriver except using headless browser, if you are interested, see {How to run rspec tests using selenium through cron}[http://stackoverflow.com/questions/7275932/how-to-run-rspec-tests-using-selenium-through-cron] for more information.
 
 ===== Install Jenkins
 
@@ -208,7 +209,7 @@ http://localhost:8080/
 
 ===== Create Jenkins Job
 
-From Jenkins dashboard, click New Item, select Freestyle project and fill the fields as described in Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings]
+From Jenkins dashboard, click New Item, select Freestyle project and fill the fields as described in {Jenkins Job Settings}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings]
 
 ===== Run it by Jenkins
 
@@ -219,7 +220,7 @@ Change mode of the folder test/visualTesting first.
 From Project page, click Build with parameters and fill/modify parameters as needed then run it.
 
 The short video below for this part:
-Rails_Selenium_Working_Case_Run_With_Jenkins[https://www.youtube.com/watch?v=9YN2-CjIyUo]
+{Rails Selenium Working Case Run With Jenkins}[https://www.youtube.com/watch?v=9YN2-CjIyUo]
 
 ==== 　
 ==== 　
@@ -321,7 +322,7 @@ visual_testing_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Prac
 
 ===== Demo Video
 
-Rails_Selenium_Detail_of_Visual_Testing[https://www.youtube.com/watch?v=numB7dTUI50]
+{Rails Selenium Detail of Visual Testing}[https://www.youtube.com/watch?v=numB7dTUI50]
 
 ===== Describe in detail
 
@@ -358,6 +359,47 @@ This is also a way to test a test case it self, you can re-consider whether need
 
 The short video below demo the process of running test case and coding with autoretest.
 
-Rails_Selenium_Working_Case_Make_Development_Assistant[https://www.youtube.com/watch?v=SNtsDxhnTNU]
+{Rails Selenium Working Case Make Development Assistant}[https://www.youtube.com/watch?v=SNtsDxhnTNU]
 
 The related files for this video are autoretest_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/integration/autoretest_test.rb] and for_autoretest.html[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/vendor/html/for_autoretest.html]
+
+==== 　
+==== 　
+=== Related Articles
+
+{Install Ubuntu 14.04 on VirtualBox}[http://happy-rails-trial.blogspot.tw/2015/02/install-ubuntu-1404-on-virtualbox.html]
+
+{Install Rails 4.1 on Ubuntu 14.04}[http://happy-rails-trial.blogspot.tw/2015/02/install-rails-41-on-ubuntu-1404.html]
+
+{Rails, minitest and Selenium}[http://happy-rails-trial.blogspot.tw/2015/07/rails-minitest-and-selenium.html]
+
+{Add Chrome Driver to Selenium}[http://happy-rails-trial.blogspot.tw/2015/07/add-chrome-driver-to-selenium.html]
+
+{Use Remote Webdriver in Selenium}[http://happy-rails-trial.blogspot.tw/2015/07/use-remote-webdriver-in-selenium.html]
+
+{Frequently Used Selenium Functions}[http://happy-rails-trial.blogspot.tw/2015/07/frequently-used-selenium-functions.html]
+
+{Install Jenkins on Ubuntu 14.04}[http://happy-rails-trial.blogspot.tw/2015/07/install-jenkins-on-ubuntu-1404.html]
+
+{Add Opera Driver to Selenium}[http://happy-rails-trial.blogspot.tw/2015/07/add-opera-driver-to-selenium.html]
+
+{Test Multiple Version of Firefox in Selenium}[http://happy-rails-trial.blogspot.tw/2015/07/test-multiple-version-of-firefox-in.html]
+
+{Take Screenshot with Ruby Selenium}[http://happy-rails-trial.blogspot.tw/2015/07/take-screenshot-with-ruby-selenium.html]
+
+{Create Parameterized Test Case}[http://happy-rails-trial.blogspot.tw/2015/07/create-parameterized-test-case.html]
+
+{Create Parameterized Test Service with Jenkins}[http://happy-rails-trial.blogspot.tw/2015/07/create-parameterized-test-service-with.html]
+
+{Make Test Case as Assistant}[http://happy-rails-trial.blogspot.tw/2015/08/make-test-case-as-assistant.html]
+
+{Image Compare in Ruby}[http://happy-rails-trial.blogspot.tw/2015/08/image-compare-in-ruby.html]
+
+{Visual Testing with Selenium in Rails}[http://happy-rails-trial.blogspot.tw/2015/08/visual-testing-with-selenium-in-rails.html]
+
+{Postpone Image Processing to All Test Cases Finished in Rails Selenium Visual Testing}[http://happy-rails-trial.blogspot.tw/2015/08/postpone-image-processing-to-all-test.html]
+
+{Manage Image Files from Selenium Visual Testing}[http://happy-rails-trial.blogspot.tw/2015/08/manage-image-files-from-selenium-visual.html]
+
+{Selenium with Rails -- The Working Case}[http://happy-rails-trial.blogspot.tw/2015/08/selenium-with-rails-working-case.html]
+
