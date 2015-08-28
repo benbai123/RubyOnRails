@@ -41,9 +41,8 @@ Make_Development_Assistant[https://github.com/benbai123/RubyOnRails/tree/master/
 
 For more information, please refer to Selenium with Rails -- The Working Case (http://happy-rails-trial.blogspot.tw/2015/08/selenium-with-rails-working-case.html)
 
-
-
-
+==== 　
+==== 　
 === Deployment Instructions
 
 At first, you need to install Rails 4.1, the commands on Ubuntu 14.04 are:
@@ -129,9 +128,8 @@ If you run test cases with Jenkins often, you probably will want to run rails ap
 
 You can also remove test_sanity from class ActionDispatch::IntegrationTest and move it into each test case to avoid the extra run.
 
-
-
-
+==== 　
+==== 　
 === Run With Remote WebDriver
 
 Before you continue this part, make sure you have done previous part Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions]
@@ -177,9 +175,8 @@ The short vidwo below shows how to start Selenium Standalone Server on windows a
 
 Rails_Selenium_Working_Case_Run_With_Remote_WebDriver[https://www.youtube.com/watch?v=tBdpj0CDz9Q]
 
-
-
-
+==== 　
+==== 　
 === Run With Jenkins
 
 Before you continue this part, make sure you have done previous two parts Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions] and Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
@@ -227,9 +224,8 @@ From Project page, click Build with parameters and fill/modify parameters as nee
 The short video below for this part:
 Rails_Selenium_Working_Case_Run_With_Jenkins[https://www.youtube.com/watch?v=9YN2-CjIyUo]
 
-
-
-
+==== 　
+==== 　
 === Jenkins Job Settings
 
 ===== This build is parameterized
@@ -318,9 +314,8 @@ Most of the time is caused by ChunkyPNG::Image.from_file since decoding PNG file
         exit -1
     fi
 
-
-
-
+==== 　
+==== 　
 === Detail of Visual Testing
 
 ===== Sample Case
@@ -354,9 +349,8 @@ is specified, the process of convert "base image" will be skipped, the process o
 
 Once you modified visual testing code (e.g., removed a shot method so the number of image changed) you will need to remove whole folder of base images to recapture base images, or handle it by the rails manage page.
 
-
-
-
+==== 　
+==== 　
 === Make Development Assistant
 
 There is a hidden parameter "autoretest", the failed test case will re-run automatically and output only filtered error message if you specified the parameter "autoretest" to any value.
