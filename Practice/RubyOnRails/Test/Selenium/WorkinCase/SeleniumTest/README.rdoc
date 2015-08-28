@@ -18,22 +18,23 @@ Let anyone who can type in terminal and editor can run Selenium Browser Automati
 
 === Outline
 
-To run it quickly from terminal at local machine, please refer to Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions].
-
-To run it with Remote WebDriver to test with Selenium Standalone Server on Remote (or Local) machine, please refer to Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
+Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions] : Run it quickly from terminal at local machine.
 
 
-To run it with Jenkins, please refer to
-Run_With_Jenkins[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-jenkins]
+Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver] : Run it with Remote WebDriver to test with Selenium Standalone Server on Remote (or Local) machine.
 
 
-For more detail with respect to Visual Testing, please refer to
-Detail_of_Visual_Testing[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#detail-of-visual-testing]
+Run_With_Jenkins[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-jenkins] : Run it with Jenkins.
 
 
-For more information about variables please refer to Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings].
+Detail_of_Visual_Testing[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#detail-of-visual-testing] : More detail with respect to Visual Testing.
 
-Regarding frequently used Selenium functions in Ruby, please refer to selenium_methods_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/SeleniumTest/test/integration/selenium_methods_test.rb] and Ruby_Bindings[https://code.google.com/p/selenium/wiki/RubyBindings]
+
+Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#jenkins-job-settings] : More information about variables.
+
+
+selenium_methods_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/SeleniumTest/test/integration/selenium_methods_test.rb] and Ruby_Bindings[https://code.google.com/p/selenium/wiki/RubyBindings] : Frequently used Selenium functions in Ruby.
+
 
 For more information, please refer to Selenium with Rails -- The Working Case (http://happy-rails-trial.blogspot.tw/2015/08/selenium-with-rails-working-case.html)
 
@@ -115,13 +116,17 @@ If you run test cases with Jenkins often, you probably will want to run rails ap
     # start rails app by user jenkins
     rails s
 
-NOTE: Just remind again, for correct output information, you need to modify test_helper.rb#L158[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L158] based on URL/Port of your environment
+*NOTE:* Just remind again, for correct output information, you need to modify test_helper.rb#L158[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L158] based on URL/Port of your environment
+
+
+*NOTE 2:*
 
 === Run With Remote WebDriver
 
 Before you continue this part, make sure you have done previous part Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions]
 
-(Can skip this part if you just want to run it on local machine from terminal.)
+
+Can skip this part if you just want to run it on local machine from terminal.
 
 ===== Start Selenium-Standalone-Server
 
@@ -165,8 +170,11 @@ Rails_Selenium_Working_Case_Run_With_Remote_WebDriver[https://www.youtube.com/wa
 
 Before you continue this part, make sure you have done previous two parts Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions] and Run_With_Remote_WebDriver[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver]
 
-(Can skip this part if you just want to run it from terminal.)
-(NOTE: Jenkins or scheduled crontab can only test with Remote WebDriver except using headless browser)
+
+Can skip this part if you just want to run it from terminal.
+
+
+*NOTE:* Jenkins or scheduled crontab can only test with Remote WebDriver except using headless browser, if you are interested, see How_to_run_rspec_tests_using_selenium_through_cron[http://stackoverflow.com/questions/7275932/how-to-run-rspec-tests-using-selenium-through-cron] for more information.
 
 ===== Install Jenkins
 
@@ -211,7 +219,7 @@ Rails_Selenium_Working_Case_Run_With_Jenkins[https://www.youtube.com/watch?v=9YN
 
 There are four parameters, cases, browsers, pageurl and skipRealDiff
 
-* NOTE: The default values are just sample values, edit them as needed.
+*NOTE:* The default values are just sample values, edit them as needed.
 
 cases, Type: String, Usage: used to specify a set of test cases to run.
 
@@ -276,7 +284,7 @@ Most of the time is caused by ChunkyPNG::Image.from_file since decoding PNG file
 
 ===== Build step (Execute shell)
 
-NOTE: update the path of first cd as needed.
+*NOTE:* update the path of first cd as needed.
 
     # go to folder of test rails app
     cd /home/benbai/Things/github/RubyOnRails/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest
@@ -321,7 +329,7 @@ If the parameter
 is specified, the process of convert "base image" will be skipped, the process of diff "new image" with "base image" will only do binary file compare and will not output "diff image". 
 
 
-NOTE: Currently the information is stored with case name, you will need to modify this if you run a case with different drivers parallel.
+*NOTE:* Currently the information is stored with case name, you will need to modify this if you run a case with different drivers parallel.
 
 
 Once you modified visual testing code (e.g., removed a shot method so the number of image changed) you will need to remove whole folder of base images to recapture base images, or handle it by the rails manage page.
