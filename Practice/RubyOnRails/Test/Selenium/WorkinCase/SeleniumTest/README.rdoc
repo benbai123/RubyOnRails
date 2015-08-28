@@ -295,7 +295,7 @@ Most of the time is caused by ChunkyPNG::Image.from_file since decoding PNG file
 
 ===== Build step (Execute shell)
 
-<b>NOTE:</b> update the path of first cd as needed.
+<b>NOTE:</b> update the path of first cd command as needed.
 
     # go to folder of test rails app
     cd /home/benbai/Things/github/RubyOnRails/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest
