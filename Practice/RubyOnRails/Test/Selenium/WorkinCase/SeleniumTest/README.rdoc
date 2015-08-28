@@ -283,7 +283,7 @@ test_helper.rb#L186[https://github.com/benbai123/RubyOnRails/blob/master/Practic
 
 skipRealDiff, Type: String, Usage: specify whether skip image processing.
 
-Required? False, will do image processing and probably take a loooong time if imssing.
+Required? False, will do image processing and probably take a loooong time if missing.
 
 Most of the time is caused by ChunkyPNG::Image.from_file since decoding PNG files is slow.
 
