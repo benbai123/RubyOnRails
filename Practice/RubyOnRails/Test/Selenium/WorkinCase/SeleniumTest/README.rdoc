@@ -116,10 +116,13 @@ If you run test cases with Jenkins often, you probably will want to run rails ap
     # start rails app by user jenkins
     rails s
 
-*NOTE:* Just remind again, for correct output information, you need to modify test_helper.rb#L158[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L158] based on URL/Port of your environment
+<b>NOTE:</b> Just remind again, for correct output information, you need to modify test_helper.rb#L158[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L158] based on URL/Port of your environment
 
 
-*NOTE 2:*
+<b>NOTE 2:</b> Currently ovrride class ActionDispatch::IntegrationTest and add test_sanity method into it (see test_helper.rb#L165[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L165]) so you just need to provie doTest method in each test case. This will cause one extra run so take care of this if you want to do some statistics.
+
+You can also remove test_sanity from class ActionDispatch::IntegrationTest and move it into each test case to avoid the extra run.
+
 
 === Run With Remote WebDriver
 
@@ -174,7 +177,7 @@ Before you continue this part, make sure you have done previous two parts Deploy
 Can skip this part if you just want to run it from terminal.
 
 
-*NOTE:* Jenkins or scheduled crontab can only test with Remote WebDriver except using headless browser, if you are interested, see How_to_run_rspec_tests_using_selenium_through_cron[http://stackoverflow.com/questions/7275932/how-to-run-rspec-tests-using-selenium-through-cron] for more information.
+<b>NOTE:</b> Jenkins or scheduled crontab can only test with Remote WebDriver except using headless browser, if you are interested, see How_to_run_rspec_tests_using_selenium_through_cron[http://stackoverflow.com/questions/7275932/how-to-run-rspec-tests-using-selenium-through-cron] for more information.
 
 ===== Install Jenkins
 
@@ -219,7 +222,7 @@ Rails_Selenium_Working_Case_Run_With_Jenkins[https://www.youtube.com/watch?v=9YN
 
 There are four parameters, cases, browsers, pageurl and skipRealDiff
 
-*NOTE:* The default values are just sample values, edit them as needed.
+<b>NOTE:</b> The default values are just sample values, edit them as needed.
 
 cases, Type: String, Usage: used to specify a set of test cases to run.
 
@@ -284,7 +287,7 @@ Most of the time is caused by ChunkyPNG::Image.from_file since decoding PNG file
 
 ===== Build step (Execute shell)
 
-*NOTE:* update the path of first cd as needed.
+<b>NOTE:</b> update the path of first cd as needed.
 
     # go to folder of test rails app
     cd /home/benbai/Things/github/RubyOnRails/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest
@@ -329,7 +332,7 @@ If the parameter
 is specified, the process of convert "base image" will be skipped, the process of diff "new image" with "base image" will only do binary file compare and will not output "diff image". 
 
 
-*NOTE:* Currently the information is stored with case name, you will need to modify this if you run a case with different drivers parallel.
+<b>NOTE:</b> Currently the information is stored with case name, you will need to modify this if you run a case with different drivers parallel.
 
 
 Once you modified visual testing code (e.g., removed a shot method so the number of image changed) you will need to remove whole folder of base images to recapture base images, or handle it by the rails manage page.
