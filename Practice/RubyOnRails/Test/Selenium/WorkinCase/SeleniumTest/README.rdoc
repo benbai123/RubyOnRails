@@ -164,7 +164,7 @@ Then run selenium/startup.sh to launch Selenium Standalone Server, it supports o
 
 ===== Run with "browsers" parameter
 
-Assume you have started Selenium Standalone Server with startup.bat and startOpera.bat on Windows, your IP is 192.168.31.169, then you can test IE and Opera by specify a 'browsers' array as below:
+Assume you have started Selenium Standalone Server with startup.bat and startOpera.bat on Windows, the IP of Windows machine is 192.168.31.169, then you can test IE and Opera by specify a 'browsers' array as below:
 
     browsers="[{'url' => '192.168.31.169', 'port' => '5555', 'browser' => 'opera'}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]" rake test:fileset
 
