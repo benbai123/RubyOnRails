@@ -1,10 +1,7 @@
 == README
-
-=== This rdoc is under working, will be finished before 9/11 (I guess), you can give it a try now however.
-
 === Introduction
 
-This is a sample project regarding how to run Selenium Auto Testing with Rails and Jenkins.
+This is a sample project regarding how to run Selenium Auto Testing with Rails from terminal or Jenkins.
 
 * Target
 Let anyone who can type in terminal and editor can run Selenium Browser Automation easily in less than 1 hour (at least, on Ubuntu).
