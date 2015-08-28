@@ -359,12 +359,14 @@ Once you modified visual testing code (e.g., removed a shot method so the number
 
 === Make Development Assistant
 
-There is a hidden parameter "autoretest", the failed test case will re-run automatically and output only filtered error message if you specified it to any value.
+There is a hidden parameter "autoretest", the failed test case will re-run automatically and output only filtered error message if you specified the parameter "autoretest" to any value.
 
 This way can make a test case become your assistant when you are coding.
 
-On the other hand, this is also a method to test a test case it self, you can re-consider whether need to add something to a test case once you pass it with incomplete code.
+This is also a way to test a test case it self, you can re-consider whether need to add something to a test case once you pass it with incomplete code.
 
 The short video below demo the process of running test case and coding with autoretest.
 
 Rails_Selenium_Working_Case_Make_Development_Assistant[https://www.youtube.com/watch?v=SNtsDxhnTNU]
+
+The related files for this video are autoretest_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/integration/autoretest_test.rb] and for_autoretest.html[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/vendor/html/for_autoretest.html]
