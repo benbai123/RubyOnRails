@@ -36,7 +36,13 @@ Jenkins_Job_Settings[https://github.com/benbai123/RubyOnRails/tree/master/Practi
 selenium_methods_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/SeleniumTest/test/integration/selenium_methods_test.rb] and Ruby_Bindings[https://code.google.com/p/selenium/wiki/RubyBindings] : Frequently used Selenium functions in Ruby.
 
 
+Make_Development_Assistant[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#make-development-assistant] : Use a hidden parameter "autoretest" to make test case works as an assistant.
+
+
 For more information, please refer to Selenium with Rails -- The Working Case (http://happy-rails-trial.blogspot.tw/2015/08/selenium-with-rails-working-case.html)
+
+
+
 
 === Deployment Instructions
 
@@ -124,6 +130,8 @@ If you run test cases with Jenkins often, you probably will want to run rails ap
 You can also remove test_sanity from class ActionDispatch::IntegrationTest and move it into each test case to avoid the extra run.
 
 
+
+
 === Run With Remote WebDriver
 
 Before you continue this part, make sure you have done previous part Deployment_Instructions[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions]
@@ -168,6 +176,9 @@ Assume you have started Selenium Standalone Server with startup.bat and startOpe
 The short vidwo below shows how to start Selenium Standalone Server on windows and test it remotely (assume you already installed Github_Desktop[https://desktop.github.com/] or something else and has git-shell to use):
 
 Rails_Selenium_Working_Case_Run_With_Remote_WebDriver[https://www.youtube.com/watch?v=tBdpj0CDz9Q]
+
+
+
 
 === Run With Jenkins
 
@@ -215,6 +226,9 @@ From Project page, click Build with parameters and fill/modify parameters as nee
 
 The short video below for this part:
 Rails_Selenium_Working_Case_Run_With_Jenkins[https://www.youtube.com/watch?v=9YN2-CjIyUo]
+
+
+
 
 === Jenkins Job Settings
 
@@ -304,6 +318,9 @@ Most of the time is caused by ChunkyPNG::Image.from_file since decoding PNG file
         exit -1
     fi
 
+
+
+
 === Detail of Visual Testing
 
 ===== Sample Case
@@ -336,3 +353,18 @@ is specified, the process of convert "base image" will be skipped, the process o
 
 
 Once you modified visual testing code (e.g., removed a shot method so the number of image changed) you will need to remove whole folder of base images to recapture base images, or handle it by the rails manage page.
+
+
+
+
+=== Make Development Assistant
+
+There is a hidden parameter "autoretest", the failed test case will re-run automatically and output filtered error message only if you specified it to any value.
+
+This way can make a test case become your assistant when you are coding.
+
+On the other hand, this is also a method to test a test case it self, you can re-consider whether need to add something to a test case once you pass it with incomplete code.
+
+The short video below demo the process of running test case and coding with autoretest.
+
+    TODO: add video
