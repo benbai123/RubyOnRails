@@ -250,6 +250,8 @@ There are four parameters, cases, browsers, pageurl and skipRealDiff
 
 <b>NOTE:</b> The default values are just sample values, edit them as needed.
 
+Basically you will need to modify the IP of 'browsers' and 'pageurl' parameters, and the path for 'cd' command in shell script.
+
 cases, Type: String, Usage: used to specify a set of test cases to run.
 
 Required? False, will run all test case under test/integration if missing.
