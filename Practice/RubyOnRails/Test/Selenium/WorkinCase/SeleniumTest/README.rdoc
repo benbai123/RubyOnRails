@@ -102,7 +102,12 @@ also remember run rails app in another terminal window
     rails s
 
 You can also refer to the short video contains whole process above:
+
 {Rails Selenium Working Case Deployment Instructions}[https://www.youtube.com/watch?v=vnXCo-JBfLg]
+
+Or the long video including 5 minutes for install Rails and 4 minutes for clone this project
+
+{Rails Selenium Working Case Deployment Instructions (Full)}[https://www.youtube.com/watch?v=prN3O1THFNI]
 
 If you run test cases with Jenkins often, you probably will want to run rails app with user jenkins for permission issue (Regarding to manage images from visual testing):
 
