@@ -233,7 +233,12 @@ Change mode of the folder test/visualTesting first.
 From Project page, click Build with parameters and fill/modify parameters as needed then run it.
 
 The short video below for this part:
+
 {Rails Selenium Working Case Run With Jenkins}[https://www.youtube.com/watch?v=9YN2-CjIyUo]
+
+The Full version including 8 minutes for install Jenkins and create Jenkins Job, 3 minutes for a mistake (forgot to correct IP address)
+
+{Rails Selenium Working Case Run With Jenkins}[https://www.youtube.com/watch?v=HM31vMDdq8g]
 
 ==== 　
 ==== 　
