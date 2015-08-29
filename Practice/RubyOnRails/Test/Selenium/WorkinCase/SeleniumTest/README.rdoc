@@ -146,7 +146,7 @@ There are already some ready-to-use resources in this repo (but not in this proj
 
 For remote windows machine, assume you already installed JDK/JRE like JDK7[http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html] to execute .jar file, also assume you have installed {Github Desktop}[https://desktop.github.com/] or something else and has git-shell to use.
 
-For Internet Explorer, you will need to make all sites using the same protect mode setting (this part will be included in the Full demo video below).
+For Internet Explorer, you will need to make all sites using the same protect mode setting (All enabled or disabled, this part will be included in the Full demo video below).
 
 The first step is still clone this project if needed, then
 
