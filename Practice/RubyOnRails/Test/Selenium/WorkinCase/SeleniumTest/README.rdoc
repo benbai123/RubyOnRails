@@ -144,6 +144,8 @@ Can skip this part if you just want to run it on local machine from terminal.
 
 There are already some ready-to-use resources in this repo (but not in this project).
 
+(Assume you already installed JDK/JRE like JDK7[http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html] to execute .jar file, also assume you have installed {Github Desktop}[https://desktop.github.com/] or something else and has git-shell to use)
+
 The first step is still clone this project if needed, then
 
 * For Windows
@@ -174,7 +176,7 @@ Assume you have started Selenium Standalone Server with startup.bat and startOpe
     browsers="[{'url' => '192.168.31.169', 'port' => '5555', 'browser' => 'opera'}, {'url' => '192.168.31.169', 'browser' => 'internet_explorer'}]" rake test:fileset
 
 
-The short vidwo below shows how to start Selenium Standalone Server on windows and test it remotely (assume you already installed JDK/JRE like JDK7[http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html], also assume you have installed {Github Desktop}[https://desktop.github.com/] or something else and has git-shell to use):
+The short vidwo below shows how to start Selenium Standalone Server on windows and test it remotely:
 
 {Rails Selenium Working Case Run With Remote WebDriver}[https://www.youtube.com/watch?v=tBdpj0CDz9Q]
 
