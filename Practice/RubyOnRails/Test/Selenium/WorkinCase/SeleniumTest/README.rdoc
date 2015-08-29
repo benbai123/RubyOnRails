@@ -182,6 +182,10 @@ The short vidwo below shows how to start Selenium Standalone Server on windows a
 
 {Rails Selenium Working Case Run With Remote WebDriver}[https://www.youtube.com/watch?v=tBdpj0CDz9Q]
 
+The Full version including IE settings and 4 minutes for clone this project.
+
+{Rails Selenium Working Case Run With Remote WebDriver}[https://www.youtube.com/watch?v=cWc3TeaBs6A]
+
 ==== 　
 ==== 　
 === Run With Jenkins
