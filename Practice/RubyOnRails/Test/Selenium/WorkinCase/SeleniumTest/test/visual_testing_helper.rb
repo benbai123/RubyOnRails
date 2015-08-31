@@ -161,8 +161,8 @@ class ActiveSupport::VisualTestingHelper
     end
 
 
-
-    x, y = diff.map{ |xy| xy[0] }, diff.map{ |xy| xy[1] }
+    # merge overlapped range for better output, comments out if not needed
+    diff_arrays = self.merge_overlapped_range(diff_arrays) if diff_arrays.length > 0
 
     if diff_arrays.length > 0
       diff_arrays.each do |d|
@@ -221,5 +221,23 @@ class ActiveSupport::VisualTestingHelper
     dx = arr[0]-x if x < arr[0]
     dx = x-arr[2] if x > arr[2]
     return dy*dy+dx*dx
+  end
+  def self.merge_overlapped_range diff_arrays
+    result_arrays = []
+    diff_arrays.each do |d|
+      found = false
+      result_arrays.each do |r|
+        break if found
+        if !found && d[0]<r[2] && d[2]>r[0] && d[1]<r[3] && d[3]>r[1]
+          found = true
+          r[0] = d[0] if d[0] < r[0]
+          r[1] = d[1] if d[1] < r[1]
+          r[2] = d[2] if d[2] > r[2]
+          r[3] = d[3] if d[3] > r[3]
+        end
+      end
+      result_arrays << d if !found
+    end
+    return result_arrays
   end
 end
