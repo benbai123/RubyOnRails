@@ -2,13 +2,17 @@
 <html>
 <head>
   <title>Pjax</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application'%>
 </head>
 <body>
-
-<%= yield %>
-
+  <h1>Pjax Practice</h1>
+  <div class="container" id="pjax-container">
+    <%= yield %>
+  </div>
+  <script>
+    $(document).on('ready pjax:end', function () {
+      $(document).pjax('a', '#pjax-container')
+    });
+  </script>
 </body>
 </html>

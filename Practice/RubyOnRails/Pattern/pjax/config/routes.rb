@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/page/1' => 'page#pageOne'
+  get '/page/2' => 'page#pageTwo'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
