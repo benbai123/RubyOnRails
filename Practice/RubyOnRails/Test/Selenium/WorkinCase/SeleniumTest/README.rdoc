@@ -45,6 +45,9 @@ selenium_methods_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Pr
 
 At first, you need to install Rails 4.1, the commands on Ubuntu 14.04 are:
 
+    # in case add-apt-repository not available for some ubuntu 14.04 text mode
+    sudo apt-get install -y software-properties-common
+    sudo apt-get install -y python-software-properties
     # Install ruby 2.1
     sudo add-apt-repository ppa:brightbox/ruby-ng
     sudo apt-get update
@@ -73,6 +76,8 @@ Then clone this repository, after that you should be able to run it from termina
     git clone https://github.com/benbai123/RubyOnRails.git
     # go to this project
     cd RubyOnRails/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest
+    # in case 'make' not available in text mode
+    sudo apt-get install -y build-essential
     # bundle install
     bundle install
     
