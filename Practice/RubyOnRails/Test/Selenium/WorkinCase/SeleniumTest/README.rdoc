@@ -15,6 +15,8 @@ Let anyone who can type in terminal and editor can run Selenium Browser Automati
 
 === Outline
 
+Follow each part below if you want to run it on real machine manually, or refer to the {Docker version}[https://github.com/benbai123/DevOps/tree/master/Practice/Docker/Dockerfiles/RailsSeleniumWorkingCase] that prepare whole Ubuntu environment with {Docker}[https://www.docker.com/].
+
 {Deployment Instructions}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#deployment-instructions] : Run it quickly from terminal at local machine.
 
 
