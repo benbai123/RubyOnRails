@@ -46,8 +46,8 @@ selenium_methods_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Pr
 At first, you need to install Rails 4.1, the commands on Ubuntu 14.04 are:
 
     # in case add-apt-repository not available for some ubuntu 14.04 text mode
-    sudo apt-get install -y software-properties-common
     sudo apt-get install -y python-software-properties
+    sudo apt-get install -y software-properties-common
     # Install ruby 2.1
     sudo add-apt-repository ppa:brightbox/ruby-ng
     sudo apt-get update
