@@ -94,6 +94,12 @@ Then clone this repository, after that you should be able to run it from termina
     gedit test/test_helper.rb
     # than close gedit and continue
     
+Then run test case as below
+
+<b>NOTE:</b> To run test cases locally you will need a display and GUI to run real browser, otherwise please follow the next section {Run With Remote WebDriver}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#run-with-remote-webdriver] (but complete this section first, just skip the rake test part).
+
+You can also run test cases with headless browser in text mode, please refer to {article at stackoverflow}[http://stackoverflow.com/questions/26083760/running-selenium-tests-in-ruby-with-jenkins].
+
     # run all integration test with the customized flow
     rake test:fileset
     # or run all specified cases (under test/integration)
