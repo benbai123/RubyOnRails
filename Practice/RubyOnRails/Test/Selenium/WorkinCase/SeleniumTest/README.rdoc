@@ -33,12 +33,13 @@ Follow each part below if you want to run it on real machine manually, or refer 
 
 
 selenium_methods_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/SeleniumTest/test/integration/selenium_methods_test.rb] and {Ruby Bindings}[https://code.google.com/p/selenium/wiki/RubyBindings] : Frequently used Selenium functions in Ruby.
+You can also generate ruby code with {Selenium IDE}[http://www.seleniumhq.org/projects/ide/], see {How can i automatically convert Selenium HTML tests to Ruby Test::Unit tests?}[http://stackoverflow.com/questions/4386559/how-can-i-automatically-convert-selenium-html-tests-to-ruby-testunit-tests].
 
 
 {Make Development Assistant}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#make-development-assistant] : Use a hidden parameter "autoretest" to make test case works as an assistant.
 
 
-{Related Articles}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#related-articles] : Some of my blog post that related to this project, check them if you want to know more details and build / customize project yourself.
+{Related Files}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#related-files] and {Related Articles}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#related-articles] : Files in this project and some of my blog post that related to this project, check them if you want to know more details and build / customize project yourself.
 
 
 ==== 　
@@ -396,6 +397,71 @@ The short video below demo the process of running test case and coding with auto
 {Rails Selenium Working Case Make Development Assistant}[https://www.youtube.com/watch?v=SNtsDxhnTNU]
 
 The related files for this video are autoretest_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/integration/autoretest_test.rb] and for_autoretest.html[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/vendor/html/for_autoretest.html]
+
+
+====　
+====　
+=== Related Files
+
+{routes.rb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/config/routes.rb]
+
+Define routes for manage pages.
+
+{visual_testing_controller.rb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/app/controllers/visual_testing_controller.rb]
+
+Controller for manage pages.
+
+{showcases.html.erb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/app/views/visual_testing/showcases.html.erb]
+
+Show all test cases under test/integration
+
+{show.html.erb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/app/views/visual_testing/show.html.erb]
+
+Navigate folders from visal testing.
+
+{listimgs.html.erb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/app/views/visual_testing/listimgs.html.erb]
+
+For manage images from visual testing.
+
+{Gemfile}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/Gemfile]
+
+Add gems for selenium-webdriver and chunky_png (for visual testing) here.
+
+{test.rake}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/lib/tasks/test.rake]
+
+Two things.
+
+1. Rescue from 'rake aborted' if runs by Jenkins or other 'runner' since they probably need to do some more things (e.g., chmod) rather than just aborted.
+
+2. Create a rake task that can test a set of test cases by passing 'cases' argument.
+(e.g., cases="['case_1', 'case_2', 'case_3']")
+
+<b>NOTE:</b> Currently it runs cases under the folder test/integration only, you can modify it if needed.
+
+{test_helper.rb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb]
+
+Handle whole testing process by class ActiveSupport::TestCase, override class ActionDispatch::IntegrationTest to define some shared method, override MiniTest::CompositeReporter to do something (convert/diff images, log failed cases, etc) after all test cases finished.
+
+{visual_testing_helper.rb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/visual_testing_helper.rb]
+
+Provide methods for visual testing feature.
+
+{simple_test.rb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/integration/simple_test.rb]
+
+A pretty simple test case.
+
+{visual_testing_test.rb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/integration/visual_testing_test.rb]
+
+Test case for record the visual testing demo.
+
+{autoretest_test.rb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/integration/autoretest_test.rb]
+
+Test case for record the autoretest demo.
+
+{for_autoretest.html}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/vendor/html/for_autoretest.html]
+
+The html page tested by autoretest_test.rb
+
 
 ==== 　
 ==== 　
