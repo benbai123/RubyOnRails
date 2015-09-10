@@ -8,8 +8,14 @@ require 'chunky_png'
 
 
 class ActiveSupport::TestCase
+  # for base images that haven't converted to rgba format
+  # will not do convert if skipRealDiff arg is specified to 'true'
+  # but will display its url however
   @@convertedImgs = []
+  # contains all faild cases including failed
+  # assertions, exceptions and new image different with base image
   @@failedCases = []
+  # contains visual testing folder for failed cases
   @@failedCasesVtFolder = {}
   def self.converted_images
     return @@convertedImgs
@@ -61,6 +67,7 @@ class ActiveSupport::TestCase
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
   fixtures :all
+
   # for parameterized test case
   # usage:
   # browsers=[{'url' => 'remote url', 'port' => 'port number', 'browser' => 'browser name', 'caps' => capabilities_hash}, ...]
@@ -87,10 +94,12 @@ class ActiveSupport::TestCase
       self.doTest(test_case, driver)
     end
   end
+
   def self.paramsFromEnv
     # parse parameters
     return JSON.parse ENV['browsers'].gsub('=>', ':').gsub("'", "\"")
   end
+
   # create driver with given param
   def self.getRemoteDriverFromEnvParam (param)
     driverparam = {}
@@ -114,6 +123,7 @@ class ActiveSupport::TestCase
     driver.rake_env_params = driverparam
     return driver
   end
+
   # get base capabilities by given browser
   def self.getBrowserCapabilities (browser)
     if browser.eql? 'opera'
@@ -139,6 +149,7 @@ class ActiveSupport::TestCase
       return caps
     end
   end
+
   # display errors only from given filename
   def self.displayFilteredError (error, filename)
     puts "Error: " + error.message
@@ -153,13 +164,17 @@ class ActiveSupport::TestCase
       end
     end
   end
+
   def self.get_visualtesting_link path
     # split and join to remove first
-    return 'http://192.168.31.225:3000/vt/browse/visualTesting'+path.split('visualTesting').from(1).join('visualTesting')
+    return 'http://192.168.31.218:3000/vt/browse/visualTesting'+path.split('visualTesting').from(1).join('visualTesting')
   end
 end
 ##
 # default methods for test cases
+# will cause one extra run since
+# the method 'test_sanity' will be called by
+# minitest automatically
 ##
 class ActionDispatch::IntegrationTest
   def test_sanity
@@ -192,7 +207,8 @@ class ActionDispatch::IntegrationTest
   end
 end
 ##
-# intercept report
+# intercept report to do visual testing and output message after
+# all test cases finished 
 ##
 class MiniTest::CompositeReporter
   alias :oreport :report
@@ -205,6 +221,7 @@ class MiniTest::CompositeReporter
     cimgs = ActiveSupport::TestCase.converted_images
     # convert png to rgba for base images
     if vt_cnt['to_conv']
+      # tocs: baseImg, converted baseImg, parent_dir
       vt_cnt['to_conv'].each do |tocs|
         # puts 'convert ' + tocs[0]
         cimgs << tocs[0]
@@ -213,13 +230,17 @@ class MiniTest::CompositeReporter
     end
     # diff base image with new image
     if vt_cnt['to_diff']
+      # tod: array including baseImg, newImg,
+      # converted baseImg, diffImg, case_name, parent_dir
       vt_cnt['to_diff'].each do |tod|
         # puts 'diff ' + tod[0].split('visualTesting/').last
         same = ActiveSupport::VisualTestingHelper.diff_img(tod[0], tod[1], tod[2], tod[3])
         if !same
+          # add case name to failed cases
           ActiveSupport::TestCase.faled_cases << tod[4] if !ActiveSupport::TestCase.faled_cases.include?(tod[4])
-
+          # create entry of failed vt folder for the case
           ActiveSupport::TestCase.faled_vt_folder[tod[4]] = [] if !ActiveSupport::TestCase.faled_vt_folder[tod[4]]
+          # push path of failed vt folder
           ActiveSupport::TestCase.faled_vt_folder[tod[4]] << tod[5] if !ActiveSupport::TestCase.faled_vt_folder[tod[4]].include?(tod[5])
         end
       end

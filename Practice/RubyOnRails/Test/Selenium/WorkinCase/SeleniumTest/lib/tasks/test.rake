@@ -1,4 +1,5 @@
 require 'fileutils'
+
 # override Rake::Task.invoke to do something after
 # all test cases finished
 class Rake::Task
@@ -8,17 +9,25 @@ class Rake::Task
     puts 'before task'
     # output process pid
     puts 'pid: ' + Process.pid.to_s
-    # set file name for communicating with test cases
 
     begin
       # call old invoke
       old_invoke(args)
     rescue => e
+      # rescue error if runner is specified since runner
+      # probably want to do more things rather than aborted
       raise e if !ENV['runner']
       puts 'ignore rake exception so runner job will not be interrupted in lib/test.rake, view exception here if needed'
     end
   end
 end
+
+# task 'test:fileset'
+# can test all test cases under test/integration by default
+# or test a set of test cases under test/integration with given 'cases' arg
+#
+# modify variable 'carr' below as needed to
+# add more folders
 namespace :test do
   Rake::TestTask.new(:fileset) do |t|
     t.libs << "test"
@@ -26,8 +35,8 @@ namespace :test do
     cstr = ENV['cases']
     # case array
     # default all cases under test/integration
-    # the local cases will fail with Jenkins however
     carr = ['test/integration/*.rb']
+
     # if cases string exists
     if !cstr.nil? && !cstr.empty?
       # parse cases string to temp case array
@@ -41,7 +50,9 @@ namespace :test do
       end
     end
     # set test_files
-    # Note the order will always
+    # Note
+    # from my test
+    # the order will always
     # different with the order you specified in
     # parameter
     t.test_files = Rake::FileList.new(carr)
@@ -50,8 +61,10 @@ namespace :test do
     # from my test
     # use the line below will test cases
     # with the same order as you specified
-    #
+    # ---------------------
     # t.test_files = carr
+    # ---------------------
+
     t.verbose = true
   end
 end

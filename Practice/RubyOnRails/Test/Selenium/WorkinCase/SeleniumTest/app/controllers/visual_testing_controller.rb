@@ -98,7 +98,7 @@ class VisualTestingController < ApplicationController
     return path
   end
   def get_fullpath (path)
-    return File.join('test', path)
+    return File.join('test', path) # should only access test folder
   end
   def get_files (path)
     files = []
@@ -112,6 +112,7 @@ class VisualTestingController < ApplicationController
     end
     return files
   end
+  # for manage page
   def get_img_files (path)
     # hash for group files
     imgs = []
@@ -122,7 +123,7 @@ class VisualTestingController < ApplicationController
     baseImgs = get_files(bstart).reject { |c| !c.end_with? '.png' }
     newImgs = get_files(nstart).reject { |c| !c.end_with? '.png' }
     diffImgs = get_files(dstart).reject { |c| !c.end_with? '.png' }
-    # replace path to url path
+    # replace path to url
     bstart = File.join('/vt/browse', bstart.partition('test').last)
     nstart = File.join('/vt/browse', nstart.partition('test').last)
     dstart = File.join('/vt/browse', dstart.partition('test').last)

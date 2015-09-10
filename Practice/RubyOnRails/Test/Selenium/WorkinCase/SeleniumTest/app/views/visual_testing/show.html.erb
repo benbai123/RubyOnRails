@@ -1,3 +1,6 @@
+<!-- show folders under current path
+    also link to each folder for frowse
+ -->
 <% @files.each do |file| %>
 <%= link_to file, browse_path(File.join(@path, file)) %><br>
 <% end %>

@@ -1,6 +1,5 @@
 <!--
     html content
-    some comments are in style area below
   -->
 <div class="wrapper">
   <!-- title for imgs -->
@@ -34,9 +33,9 @@
     Click Apply button to apply new img as base img, click Delete button to delete base img.
   </span>
   <div class="buttons">
-    <!-- Apply button, only displayed when base img clicked -->
-    <button class="btn apply">Apply</button>
     <!-- Apply button, only displayed when new img clicked -->
+    <button class="btn apply">Apply</button>
+    <!-- Delete button, only displayed when base img clicked -->
     <button class="btn delete">Delete</button>
   </div>
   <!-- zoom in img -->
@@ -60,7 +59,7 @@
   }
   /*
     imgs: contains all image;
-    imgstxt: title of images;
+    imgstxt: msgs of images;
   */
   .imgs,
   .imgstxt {
@@ -181,20 +180,12 @@
       // update client status directly
       if (act == 'Apply') {
         onResp = function () {
-          var $nbase = $imgs.eq(1).clone(),
-            src = $nbase.attr('src'),
-            arr = src.split('new_'),
-            len = arr.length;
-          src = arr.slice(0, len-2).join('new_');
-          arr = arr.slice(len-2, len);
-          arr.splice(0, 0, '');
-          src += arr.join('base_');
+          var $nbase = $imgs.eq(0),
+            src = $nbase.attr('src');
 
           // avoid cache
           $nbase.attr('src', src+'?t='+ new Date().getTime());
 
-          bindImgEvent ($nbase);
-          $imgs.eq(0).replaceWith($nbase);
           $imgs.eq(2).remove(); 
         }
       } else if (act == 'Delete') {

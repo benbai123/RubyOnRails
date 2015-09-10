@@ -86,7 +86,7 @@ Then clone this repository, after that you should be able to run it from termina
     bundle install
     
     # For correct output information, modify
-    # test/test_helper.rb#L158 based on
+    # test/test_helper.rb#L170 based on
     # URL/Port of your environment
     
     # get IP information from terminal
@@ -139,10 +139,10 @@ If you run test cases with Jenkins often, you probably will want to run rails ap
     # start rails app by user jenkins
     rails s
 
-<b>NOTE:</b> Just remind again, for correct output information, you need to modify test_helper.rb#L158[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L158] based on URL/Port of your environment
+<b>NOTE:</b> Just remind again, for correct output information, you need to modify test_helper.rb#L170[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L170] based on URL/Port of your environment
 
 
-<b>NOTE 2:</b> Currently ovrride class ActionDispatch::IntegrationTest and add test_sanity method into it (see test_helper.rb#L165[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L165]) so you just need to provie doTest method in each test case. This will cause one extra run so take care of this if you want to do some statistics.
+<b>NOTE 2:</b> Currently ovrride class ActionDispatch::IntegrationTest and add test_sanity method into it (see test_helper.rb#L180[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L180]) so you just need to provie doTest method in each test case. This will cause one extra run so take care of this if you want to do some statistics.
 
 You can also remove test_sanity from class ActionDispatch::IntegrationTest and move it into each test case to avoid the extra run.
 
@@ -308,7 +308,7 @@ Required? False, just use it as needed.
 
 If you specified it, you can get it by calling getPageURL in test case (if extends ActionDispatch::IntegrationTest), see
 
-test_helper.rb#L186[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L186]
+test_helper.rb#L201[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/test_helper.rb#L201]
 
     Default value
     http://192.168.31.169:8080
@@ -403,25 +403,7 @@ The related files for this video are autoretest_test.rb[https://github.com/benba
 ====　
 === Related Files
 
-{routes.rb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/config/routes.rb]
-
-Define routes for manage pages.
-
-{visual_testing_controller.rb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/app/controllers/visual_testing_controller.rb]
-
-Controller for manage pages.
-
-{showcases.html.erb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/app/views/visual_testing/showcases.html.erb]
-
-Show all test cases under test/integration
-
-{show.html.erb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/app/views/visual_testing/show.html.erb]
-
-Navigate folders from visal testing.
-
-{listimgs.html.erb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/app/views/visual_testing/listimgs.html.erb]
-
-For manage images from visual testing.
+===== Gemfile and test task
 
 {Gemfile}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/Gemfile]
 
@@ -445,6 +427,30 @@ Handle whole testing process by class ActiveSupport::TestCase, override class Ac
 {visual_testing_helper.rb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/visual_testing_helper.rb]
 
 Provide methods for visual testing feature.
+
+===== Regarding manage pages
+
+{routes.rb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/config/routes.rb]
+
+Define routes for manage pages.
+
+{visual_testing_controller.rb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/app/controllers/visual_testing_controller.rb]
+
+Controller for manage pages.
+
+{showcases.html.erb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/app/views/visual_testing/showcases.html.erb]
+
+Show all test cases under test/integration
+
+{show.html.erb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/app/views/visual_testing/show.html.erb]
+
+Navigate folders from visal testing.
+
+{listimgs.html.erb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/app/views/visual_testing/listimgs.html.erb]
+
+For manage images from visual testing.
+
+===== Test cases and sample page for autoretest
 
 {simple_test.rb}[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/integration/simple_test.rb]
 
