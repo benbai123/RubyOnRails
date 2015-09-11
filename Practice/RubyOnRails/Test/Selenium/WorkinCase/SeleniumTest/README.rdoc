@@ -38,6 +38,7 @@ You can also generate ruby code with {Selenium IDE}[http://www.seleniumhq.org/pr
 
 {Make Development Assistant}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#make-development-assistant] : Use a hidden parameter "autoretest" to make test case works as an assistant.
 
+{Move this project to your own VCS}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#move-this-project-to-your-own-vcs]
 
 {Related Files}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#related-files] and {Related Articles}[https://github.com/benbai123/RubyOnRails/tree/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest#related-articles] : Files in this project and some of my blog post that related to this project, check them if you want to know more details and build / customize project yourself.
 
@@ -398,6 +399,17 @@ The short video below demo the process of running test case and coding with auto
 
 The related files for this video are autoretest_test.rb[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/test/integration/autoretest_test.rb] and for_autoretest.html[https://github.com/benbai123/RubyOnRails/blob/master/Practice/RubyOnRails/Test/Selenium/WorkinCase/SeleniumTest/vendor/html/for_autoretest.html]
 
+
+====
+====
+=== Move this project to your own VCS
+
+You can either fork this project, or clone this project and export the source to anywhere you want as below:
+
+    # export resources from a git repo
+    git archive master | tar -x -C /somewhere/else
+
+please refer to {Do a “git export” (like “svn export”)?}[http://stackoverflow.com/questions/160608/do-a-git-export-like-svn-export] for more information about git archive.
 
 ====　
 ====　
